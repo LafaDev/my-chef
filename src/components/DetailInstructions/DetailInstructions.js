@@ -3,7 +3,10 @@ import './DetailInstructions.css';
 
 export default function DetailInstructions() {
   return (
-    <section className="container containerDetailInstructions">
+    <section
+      className="container containerDetailInstructions"
+      data-testid="instructions"
+    >
       <p> Detalhes </p>
     </section>
   );

@@ -3,7 +3,7 @@ import DetailButtons from '../components/DetailButtons/DetailButtons';
 import DetailIngredients from '../components/DetailIngredients/DetailIngredients';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import DetailTumb from '../components/DetailTumb/DetailTumb';
-import DetailVideo from '../components/DetailVideo/DetailButtons';
+import DetailVideo from '../components/DetailVideo/DetailVideo';
 
 export default function Detail() {
   return (
