@@ -6,7 +6,7 @@ import mealIcon from '../../images/mealIcon.svg';
 
 export default function LowerMenu() {
   return (
-    <section data-testid="footer" className="lowermenu">
+    <section data-testid="footer" className="lowerMenu">
       <img
         src={ drinkIcon }
         className="icon lowerIcon"
