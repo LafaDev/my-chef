@@ -24,7 +24,7 @@ export default function DetailButtons() {
         data-testid="start-recipe-btn"
         type="button"
       >
-        share
+        Start
 
       </button>
     </section>

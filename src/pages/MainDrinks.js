@@ -8,7 +8,7 @@ export default function Main() {
     <section>
       <Header />
       <SearchBar />
-
+      <h1>drinks</h1>
       <LowerMenu />
     </section>
   );
