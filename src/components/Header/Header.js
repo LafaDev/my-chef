@@ -32,14 +32,18 @@ export default function Header({ title }) {
         { title }
       </h1>
 
-      <button type="button" onClick={ handleClick }>
-        <img
-          src={ searchIcon }
-          className="icon headerIcon"
-          alt="search-icon"
-          data-testid="search-top-btn"
-        />
-      </button>
+      {
+        title !== 'Explorer' && title !== 'Profile' && (
+          <button type="button" onClick={ handleClick }>
+            <img
+              src={ searchIcon }
+              className="icon headerIcon"
+              alt="search-icon"
+              data-testid="search-top-btn"
+            />
+          </button>
+        )
+      }
       {searchBar && <SearchBar />}
     </section>
   );

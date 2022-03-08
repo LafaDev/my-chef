@@ -5,9 +5,8 @@ import LowerMenu from '../components/LowerMenu/LowerMenu';
 export default function Profile() {
   return (
     <section className="container">
-      <Header />
+      <Header title="Profile" />
       <LowerMenu />
-      <h1>profile</h1>
     </section>
   );
 }

@@ -5,7 +5,7 @@ import LowerMenu from '../components/LowerMenu/LowerMenu';
 export default function ExplorerType() {
   return (
     <section className="container">
-      <Header />
+      <Header title="TIPO" />
       <LowerMenu />
     </section>
   );
