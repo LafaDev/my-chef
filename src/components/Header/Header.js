@@ -18,10 +18,11 @@ export default function Header() {
 
   return (
     <section className=" container header">
-      <Link to="/profile" data-testid="profile-top-btn">
+      <Link to="/profile">
         <img
           src={ profileIcon }
           className="icon headerIcon"
+          data-testid="profile-top-btn"
           alt="profile-icon"
         />
       </Link>
