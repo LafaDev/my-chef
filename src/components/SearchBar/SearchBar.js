@@ -8,7 +8,7 @@ export default function SearchBar() {
       <form>
 
         <label htmlFor="ingredient">
-          ingredient
+          Ingredient
 
           <input
             name="filter"

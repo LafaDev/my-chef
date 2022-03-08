@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default function Header() {
+  const [searchBar, setSearchBar] = useState(false);
+
+  const handleClick = () => {
+    if (searchBar === false) {
+      setSearchBar(true);
+    } else {
+      setSearchBar(false);
+    }
+  };
+
   return (
     <section className=" container header">
-      <Link to="/profile">
+      <Link to="/profile" data-testid="profile-top-btn">
         <img
           src={ profileIcon }
           className="icon headerIcon"
           alt="profile-icon"
-          data-testid="profile-top-btn"
         />
       </Link>
 
@@ -22,12 +32,14 @@ export default function Header() {
         Hmmm
       </h1>
 
-      <img
-        src={ searchIcon }
-        className="icon headerIcon"
-        alt="search-icon"
-        data-testid="search-top-btn"
-      />
+      <button type="button" data-testid="search-top-btn" onClick={ handleClick }>
+        <img
+          src={ searchIcon }
+          className="icon headerIcon"
+          alt="search-icon"
+        />
+      </button>
+      {searchBar && <SearchBar />}
     </section>
   );
 }

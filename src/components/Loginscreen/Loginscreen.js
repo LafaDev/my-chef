@@ -27,7 +27,7 @@ export default function Loginscreen() {
   };
 
   const passwordValidation = ({ target }) => {
-    if (target.value.length >= MIN_CHAR) {
+    if (target.value.length > MIN_CHAR) {
       setPasswordDisable(false);
     } else {
       setPasswordDisable(true);
