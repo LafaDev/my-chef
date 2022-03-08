@@ -40,6 +40,10 @@ export default function SearchBar() {
           />
         </label>
 
+        <input
+          data-testid="search-input"
+          type="type"
+        />
         <button type="button" data-testid="exec-search-btn"> Search </button>
 
       </form>

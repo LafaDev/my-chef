@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './Loginscreen.css';
+import { Redirect } from 'react-router-dom';
 
 const MIN_CHAR = 6;
 
-export default function Loginscreen({ history }) {
+export default function Loginscreen() {
   const [passwordDisable, setPasswordDisable] = useState(true);
   const [emailDisable, setEmailDisable] = useState(true);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [email, setEmail] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   const isButtonActive = () => {
     if (passwordDisable === false && emailDisable === false) {
@@ -22,11 +23,11 @@ export default function Loginscreen({ history }) {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email }));
-    history.push('/foods');
+    setRedirect(true);
   };
 
   const passwordValidation = ({ target }) => {
-    if (target.value.length > MIN_CHAR) {
+    if (target.value.length >= MIN_CHAR) {
       setPasswordDisable(false);
     } else {
       setPasswordDisable(true);
@@ -57,6 +58,7 @@ export default function Loginscreen({ history }) {
         className="input inputEmail"
         placeholder="Login"
         value={ email }
+        onKeyUp={ emailValidation }
         onChange={ emailValidation }
       />
       <input
@@ -65,6 +67,7 @@ export default function Loginscreen({ history }) {
         className="input inputPassWord"
         placeholder="PassWord"
         onChange={ passwordValidation }
+        onKeyUp={ passwordValidation }
       />
 
       <button
@@ -76,11 +79,7 @@ export default function Loginscreen({ history }) {
       >
         Enter
       </button>
-
+      {redirect && <Redirect to="/foods" />}
     </section>
   );
 }
-
-Loginscreen.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
-};
