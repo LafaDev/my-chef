@@ -30,7 +30,7 @@ export default function Header() {
       <h1
         data-testid="page-title"
       >
-        Hmmm
+        Food
       </h1>
 
       <button type="button" data-testid="search-top-btn" onClick={ handleClick }>
