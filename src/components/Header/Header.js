@@ -27,10 +27,8 @@ export default function Header() {
         />
       </Link>
 
-      <h1
-        data-testid="page-title"
-      >
-      
+      <h1 data-testid="page-title">
+        Foods
       </h1>
 
       <button type="button" data-testid="search-top-btn" onClick={ handleClick }>
