@@ -3,33 +3,47 @@ import './SearchBar.css';
 
 export default function SearchBar() {
   return (
-    <section className="container containerLogin">
+    <section className="container containerSearch">
+      <h3> filter </h3>
+      <form>
 
-      <h1>
-        Hmmm
-      </h1>
+        <label htmlFor="ingredient">
+          ingredient
 
-      <input
-        type="text"
-        data-testid="email-input"
-        className="input inputEmail"
-        placeholder="Login"
-      />
-      <input
-        type="password"
-        data-testid="password-input"
-        className="input inputPassWord"
-        placeholder="PassWord"
-      />
+          <input
+            name="filter"
+            data-testid="ingredient-search-radio"
+            type="radio"
+            id="ingredient"
+          />
+        </label>
 
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        className="btn btnSend"
-      >
-        Enter
-      </button>
+        <label htmlFor="letter">
+          First letter
 
+          <input
+            name="filter"
+            data-testid="name-search-radio"
+            type="radio"
+            id="letter"
+          />
+        </label>
+
+        <label htmlFor="Name">
+          Name
+
+          <input
+            name="filter"
+            data-testid="ingredient-search-radio"
+            type="radio"
+            id="name"
+          />
+        </label>
+
+        <button type="button" data-testid="exec-search-btn"> Search </button>
+
+      </form>
     </section>
+
   );
 }
