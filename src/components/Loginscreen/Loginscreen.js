@@ -30,7 +30,7 @@ export default function Loginscreen() {
               type="password"
               data-testid="password-input"
               className="input-login inputPassWord"
-              placeholder="PassWord"
+              placeholder="exemplo@exemplo"
             />
           </label>
         </form>
