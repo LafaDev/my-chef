@@ -31,11 +31,12 @@ export default function Header() {
         Foods
       </h1>
 
-      <button type="button" data-testid="search-top-btn" onClick={ handleClick }>
+      <button type="button" onClick={ handleClick }>
         <img
           src={ searchIcon }
           className="icon headerIcon"
           alt="search-icon"
+          data-testid="search-top-btn"
         />
       </button>
       {searchBar && <SearchBar />}
