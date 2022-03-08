@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Proptypes from 'prop-types';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar/SearchBar';
 
-export default function Header() {
+export default function Header({ title }) {
   const [searchBar, setSearchBar] = useState(false);
 
   const handleClick = () => {
@@ -28,7 +29,7 @@ export default function Header() {
       </Link>
 
       <h1 data-testid="page-title">
-        Foods
+        { title }
       </h1>
 
       <button type="button" onClick={ handleClick }>
@@ -43,3 +44,7 @@ export default function Header() {
     </section>
   );
 }
+
+Header.propTypes = {
+  title: Proptypes.string.isRequired,
+};

@@ -5,8 +5,7 @@ import LowerMenu from '../components/LowerMenu/LowerMenu';
 export default function Main() {
   return (
     <section>
-      <Header />
-      <h1>drinks</h1>
+      <Header title="Drinks" />
       <LowerMenu />
     </section>
   );
