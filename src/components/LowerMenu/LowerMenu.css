@@ -3,5 +3,6 @@ img {
 }
 
 .lowerMenu {
+  bottom: 0px;
   position: fixed;
 }
