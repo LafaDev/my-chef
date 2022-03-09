@@ -93,7 +93,12 @@
   transform: translateY(-1px);
 }
 
-/* Small devices (landscape phones, less than 768px) */
+.btn-login:disabled {
+  color: #c2bbbb;
+  cursor: not-allowed;
+}
+
+/* Small devices (landscape phones, less than 600px) */
 
 @media ( min-width : 600px ) {
 

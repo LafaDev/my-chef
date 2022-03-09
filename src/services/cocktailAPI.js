@@ -10,7 +10,7 @@ export const fetchDrinks = async () => {
 
 export const fetchDrinksCategories = async () => {
   try {
-    const response = await fetch('www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -20,7 +20,7 @@ export const fetchDrinksCategories = async () => {
 
 export const fetchDrinksIngredients = async () => {
   try {
-    const response = await fetch('www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -31,7 +31,7 @@ export const fetchDrinksIngredients = async () => {
 export const fetchRandomDrink = async () => {
   try {
     const response = await
-    fetch('www.thecocktaildb.com/api/json/v1/1/random.php');
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -43,12 +43,12 @@ export const fetchDrinksByAlcoholic = async (alcoholic) => {
   try {
     if (alcoholic) {
       const response = await
-      fetch('www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
+      fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
       const data = await response.json();
       return data;
     }
     const response = await
-    fetch('www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic');
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -59,7 +59,7 @@ export const fetchDrinksByAlcoholic = async (alcoholic) => {
 export const fetchDrinksByIngredient = async (ingredient) => {
   try {
     const response = await
-    fetch(`www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -70,7 +70,7 @@ export const fetchDrinksByIngredient = async (ingredient) => {
 export const fetchDrinksByCategory = async (category) => {
   try {
     const response = await
-    fetch(`www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -81,7 +81,7 @@ export const fetchDrinksByCategory = async (category) => {
 export const fetchDrinksByName = async (name) => {
   try {
     const response = await
-    fetch(`www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -92,7 +92,7 @@ export const fetchDrinksByName = async (name) => {
 export const fetchDrinksByFirstLetter = async (firstLetter) => {
   try {
     const response = await
-    fetch(`www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -103,7 +103,7 @@ export const fetchDrinksByFirstLetter = async (firstLetter) => {
 export const fetchDrinkDetails = async (id) => {
   try {
     const response = await
-    fetch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
     const data = await response.json();
     return data;
   } catch (error) {

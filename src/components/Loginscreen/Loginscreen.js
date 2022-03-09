@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Loginscreen.css';
 import { Redirect } from 'react-router-dom';
 import { FaLock, FaUser } from 'react-icons/fa';
+import './Loginscreen.css';
 
 const MIN_CHAR = 6;
 
@@ -54,14 +54,15 @@ export default function Loginscreen() {
       </h1>
 
       <div className="container-login">
+        <h2>Login</h2>
         <form action="" className="form-login">
           <label htmlFor="email-input" className="label-login">
             <FaUser />
             <input
-              type="text"
+              type="email"
               data-testid="email-input"
               className="input inputEmail"
-              placeholder="Login"
+              placeholder="exemplo@exemplo"
               value={ email }
               onKeyUp={ emailValidation }
               onChange={ emailValidation }

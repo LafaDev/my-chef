@@ -10,7 +10,7 @@ export const fetchMeals = async () => {
 
 export const fetchMealsCategories = async () => {
   try {
-    const response = await fetch('www.themealdb.com/api/json/v1/1/list.php?c=list');
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -20,7 +20,7 @@ export const fetchMealsCategories = async () => {
 
 export const fetchMealsAreas = async () => {
   try {
-    const response = await fetch('www.themealdb.com/api/json/v1/1/list.php?a=list');
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -30,7 +30,7 @@ export const fetchMealsAreas = async () => {
 
 export const fetchMealsIngredients = async () => {
   try {
-    const response = await fetch('www.themealdb.com/api/json/v1/1/list.php?i=list');
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -40,7 +40,7 @@ export const fetchMealsIngredients = async () => {
 
 export const fetchRandomMeal = async () => {
   try {
-    const response = await fetch('www.themealdb.com/api/json/v1/1/random.php');
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -51,7 +51,7 @@ export const fetchRandomMeal = async () => {
 export const fetchMealsByCategory = async (category) => {
   try {
     const response = await
-    fetch(`www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -62,7 +62,7 @@ export const fetchMealsByCategory = async (category) => {
 export const fetchMealsByArea = async (area) => {
   try {
     const response = await
-    fetch(`www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -73,7 +73,7 @@ export const fetchMealsByArea = async (area) => {
 export const fetchMealsByIngredient = async (ingredient) => {
   try {
     const response = await
-    fetch(`www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -84,7 +84,7 @@ export const fetchMealsByIngredient = async (ingredient) => {
 export const fetchMealsByFirstLetter = async (firstLetter) => {
   try {
     const response = await
-    fetch(`www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -95,7 +95,7 @@ export const fetchMealsByFirstLetter = async (firstLetter) => {
 export const fetchMealsByName = async (name) => {
   try {
     const response = await
-    fetch(`www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -106,7 +106,7 @@ export const fetchMealsByName = async (name) => {
 export const fetchMealDetails = async (id) => {
   try {
     const response = await
-    fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
     const data = await response.json();
     return data;
   } catch (error) {
