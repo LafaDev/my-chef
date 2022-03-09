@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Proptypes from 'prop-types';
-import './Header.css';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar/SearchBar';
+import './Header.css';
 
 export default function Header({ title }) {
   const [searchBar, setSearchBar] = useState(false);
@@ -18,7 +18,7 @@ export default function Header({ title }) {
   };
 
   return (
-    <section className=" container header">
+    <header className="header">
       <Link to="/profile">
         <img
           src={ profileIcon }
@@ -45,7 +45,7 @@ export default function Header({ title }) {
         )
       }
       {searchBar && <SearchBar />}
-    </section>
+    </header>
   );
 }
 

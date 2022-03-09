@@ -1,0 +1,8 @@
+.section {
+  background: green;
+  position: relative;
+}
+
+.header {
+  /* position: fixed; */
+}

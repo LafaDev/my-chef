@@ -59,9 +59,10 @@ export default function Loginscreen() {
           <label htmlFor="email-input" className="label-login">
             <FaUser />
             <input
-              type="email"
+              id="email-input"
+              type="text"
               data-testid="email-input"
-              className="input inputEmail"
+              className="input-login inputEmail"
               placeholder="exemplo@exemplo"
               value={ email }
               onKeyUp={ emailValidation }
@@ -71,28 +72,32 @@ export default function Loginscreen() {
           <label htmlFor="password-input" className="label-login">
             <FaLock />
             <input
+              id="password-input"
               type="password"
               data-testid="password-input"
-              className="input inputPassWord"
-              placeholder="PassWord"
+              className="input-login inputPassWord"
+              placeholder="Password"
               onChange={ passwordValidation }
               onKeyUp={ passwordValidation }
             />
           </label>
         </form>
+
         <div className="btn">
           <button
             type="button"
             data-testid="login-submit-btn"
-            className="btn btnSend"
+            className="btn-login"
             disabled={ buttonDisable }
             onClick={ handleClick }
           >
             Enter
           </button>
-          {redirect && <Redirect to="/foods" />}
         </div>
+        {redirect && <Redirect to="/foods" />}
+
       </div>
+
     </section>
   );
 }

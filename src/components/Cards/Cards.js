@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import './Cards.css';
 import { Link } from 'react-router-dom';
 
-export default function Cards({ strMeal, strMealThumb, strYoutube, idMeal, idDrink }) {
+export default function Cards({
+  strMeal,
+  strMealThumb,
+  strYoutube,
+  idMeal,
+  idDrink,
+  strDrinkThumb,
+  strDrink,
+}) {
   return (
     <Link to={ strYoutube ? `/foods/${idMeal}` : `/drinks/${idDrink}` }>
       <article className="card">
