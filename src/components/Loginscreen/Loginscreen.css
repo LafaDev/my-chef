@@ -1,4 +1,103 @@
-h1 {
-  color: black;
+.page-login {
+  align-items: center;
+  background-image: url('../../images/pexels-dapurmelodi-1109197.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
 }
 
+.container-login {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.419);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 15px;
+  width: 100%;
+}
+
+.container-login h2 {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.label-login {
+  padding-left: 5px;
+  transition: background 0.5s;
+}
+
+.label-login:focus-within {
+  background: rgba(255, 255, 255, 0.651);
+  border-radius: 5px 5px 0 0;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-login {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #d1d1d4;
+  font-weight: 700;
+  padding: 10px;
+  padding-left: 24px;
+  transition: 0.5s;
+  width: 80%;
+}
+
+.input-login:active, .input-login:focus, .input-login:hover {
+  border-bottom-color: #ff792e;
+  outline: none;
+}
+
+.input-login::placeholder {
+  color: #444343;
+}
+
+.btn {
+  margin-top: 2.5rem;
+}
+
+.btn-login {
+  background-color: #f8f2f2;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  color: #242323;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  outline: none;
+  padding: 1.3em 3em;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-login:hover {
+  background-color: #eb5e28;
+  box-shadow: 0 15px 20px rgba(66, 64, 62, 0.4);
+  color: #f8f2f2;
+  transform: translateY(-7px);
+}
+
+.btn-login:active {
+  transform: translateY(-1px);
+}
+
+/* Small devices (landscape phones, less than 768px) */
+
+@media ( min-width : 600px ) {
+
+  .container-login {
+    max-width: 500px;
+  }
+}
