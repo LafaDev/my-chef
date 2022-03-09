@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import './Cards.css';
 import { Link } from 'react-router-dom';
+import { FilterContext } from '../../contexts/FilterContext';
+import './Cards.css';
 
 export default function Cards({
   strMeal,
   strMealThumb,
-  strYoutube,
   idMeal,
   idDrink,
   strDrinkThumb,
   strDrink,
+  index,
 }) {
+  const { currentPage } = useContext(FilterContext);
+
   return (
-    <Link to={ strYoutube ? `/foods/${idMeal}` : `/drinks/${idDrink}` }>
-      <article className="card">
+    <Link to={ currentPage === 'foods' ? `/foods/${idMeal}` : `/drinks/${idDrink}` }>
+      <article className="cards" data-testid={ `${index}-recipe-card` }>
         <img
-          src={ strYoutube ? strMealThumb : strDrinkThumb }
+          src={ currentPage === 'foods' ? strMealThumb : strDrinkThumb }
           alt="strMealThumb"
-          name={ strYoutube ? strMeal : strDrink }
+          name={ currentPage === 'foods' ? strMeal : strDrink }
+          data-testid={ `${index}-card-img` }
         />
-        <span>{ strYoutube ? strMeal : strDrink }</span>
+        <span data-testid={ `${index}-card-name` }>
+          { currentPage === 'foods' ? strMeal : strDrink }
+        </span>
       </article>
     </Link>
   );

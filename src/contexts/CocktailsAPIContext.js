@@ -18,7 +18,7 @@ export default function CocktailAPIContextProvider({ children }) {
 
   return (
     <CocktailAPIContext.Provider
-      value={ { handleCocktailAPI, cocktailLoad, cocktailResponse,
+      value={ { handleCocktailAPI, cocktailLoad, cocktailResponse, setCocktailLoad,
       } }
     >
       {children}

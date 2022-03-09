@@ -20,7 +20,7 @@ export default function MealAPIContextProvider({ children }) {
 
   return (
     <MealAPIContext.Provider
-      value={ { handleAPI, load, apiResponse,
+      value={ { handleAPI, load, apiResponse, setLoad,
       } }
     >
       {children}

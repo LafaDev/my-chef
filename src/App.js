@@ -22,41 +22,52 @@ import Profile from './pages/Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MealAPIContextProvider from './contexts/MealAPIContex';
 import CocktailAPIContextProvider from './contexts/CocktailsAPIContext';
+import FilterContextProvider from './contexts/FilterContext';
 
 function App() {
   return (
     <Switch>
       <MealAPIContextProvider>
         <CocktailAPIContextProvider>
-          <Route exact path="/" component={ Login } />
-          <Route exact path="/foods" component={ MainFoods } />
-          {/* <Route
-          exact
-          path="/foods"
-          render={ (propRoute) => (<MainFoods { ...propRoute } />) }
-        /> */}
-          <Route exact path="/drinks" component={ MainDrinks } />
-          {/*  */}
-          <Route path="/foods/:id" component={ Detail } />
-          <Route path="/drinks/:id" component={ Detail } />
-          {/*  */}
-          <Route exact path="/foods/:id/in-progress" component={ Progress } />
-          <Route exact path="/drinks/:id/in-progress" component={ Progress } />
-          {/*  */}
-          <Route exact path="/explore" component={ Explorer } />
-          <Route exact path="/explore/foods" component={ ExplorerType } />
-          <Route exact path="/explore/drinks" component={ ExplorerType } />
-          <Route exact path="/explore/foods/nationalities" component={ ExploreNations } />
-          <Route
+          <FilterContextProvider>
+            <Route exact path="/" component={ Login } />
+            <Route exact path="/foods" component={ MainFoods } />
+            {/* <Route
             exact
-            path="/explore/foods/ingredients"
-            component={ ExploreIngredients }
-          />
-          <Route exact path="/explore/drinks/ingredients" component={ ExploreNations } />
-          {/*  */}
-          <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/done-recipes" component={ Done } />
-          <Route exact path="/favorite-recipes" component={ Favorites } />
+            path="/foods"
+            render={ (propRoute) => (<MainFoods { ...propRoute } />) }
+          /> */}
+            <Route exact path="/drinks" component={ MainDrinks } />
+            {/*  */}
+            <Route path="/foods/:id" component={ Detail } />
+            <Route path="/drinks/:id" component={ Detail } />
+            {/*  */}
+            <Route exact path="/foods/:id/in-progress" component={ Progress } />
+            <Route exact path="/drinks/:id/in-progress" component={ Progress } />
+            {/*  */}
+            <Route exact path="/explore" component={ Explorer } />
+            <Route exact path="/explore/foods" component={ ExplorerType } />
+            <Route exact path="/explore/drinks" component={ ExplorerType } />
+            <Route
+              exact
+              path="/explore/foods/nationalities"
+              component={ ExploreNations }
+            />
+            <Route
+              exact
+              path="/explore/foods/ingredients"
+              component={ ExploreIngredients }
+            />
+            <Route
+              exact
+              path="/explore/drinks/ingredients"
+              component={ ExploreNations }
+            />
+            {/*  */}
+            <Route exact path="/profile" component={ Profile } />
+            <Route exact path="/done-recipes" component={ Done } />
+            <Route exact path="/favorite-recipes" component={ Favorites } />
+          </FilterContextProvider>
         </CocktailAPIContextProvider>
       </MealAPIContextProvider>
     </Switch>
