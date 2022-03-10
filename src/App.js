@@ -38,13 +38,10 @@ function App() {
             render={ (propRoute) => (<MainFoods { ...propRoute } />) }
           /> */}
             <Route exact path="/drinks" component={ MainDrinks } />
-            {/*  */}
             <Route path="/foods/:id" component={ Detail } />
             <Route path="/drinks/:id" component={ Detail } />
-            {/*  */}
             <Route exact path="/foods/:id/in-progress" component={ Progress } />
             <Route exact path="/drinks/:id/in-progress" component={ Progress } />
-            {/*  */}
             <Route exact path="/explore" component={ Explorer } />
             <Route exact path="/explore/foods" component={ ExplorerType } />
             <Route exact path="/explore/drinks" component={ ExplorerType } />
@@ -61,9 +58,8 @@ function App() {
             <Route
               exact
               path="/explore/drinks/ingredients"
-              component={ ExploreNations }
+              component={ ExploreIngredients }
             />
-            {/*  */}
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/done-recipes" component={ Done } />
             <Route exact path="/favorite-recipes" component={ Favorites } />

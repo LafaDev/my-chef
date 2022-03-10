@@ -15,7 +15,6 @@ export default function MealAPIContextProvider({ children }) {
     const results = await fetchMeals();
     setLoad(false);
     setApiResponse(results.meals);
-    console.log(results.meals);
   };
 
   return (

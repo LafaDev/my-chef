@@ -60,7 +60,7 @@ export default function Loginscreen() {
             <FaUser />
             <input
               id="email-input"
-              type="text"
+              type="email"
               data-testid="email-input"
               className="input-login inputEmail"
               placeholder="exemplo@exemplo"
