@@ -1,7 +1,5 @@
-h1 {
-  color: black;
-}
-
-img {
-  width: 100px;
+.header {
+  background-color: rgba(127, 255, 212, 0.541);
+  display: flex;
+  justify-content: space-between;
 }

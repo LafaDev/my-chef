@@ -9,7 +9,7 @@ export default function FilterContextProvider({ children }) {
   // states
 
   const [currentPage, setCurrentPage] = useState([]);
-  const [search, setSearch] = useState({});
+  const [search, setSearch] = useState([]);
   // functions
   const handlePage = (page) => {
     setCurrentPage(page);

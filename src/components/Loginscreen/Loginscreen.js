@@ -82,6 +82,7 @@ export default function Loginscreen() {
             />
           </label>
         </form>
+
         <div className="btn">
           <button
             type="button"
@@ -92,9 +93,11 @@ export default function Loginscreen() {
           >
             Enter
           </button>
-          { redirect && <Redirect to="/foods" /> }
         </div>
+        { redirect && <Redirect to="/foods" /> }
+
       </div>
+
     </section>
   );
 }

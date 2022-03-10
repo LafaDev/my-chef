@@ -18,7 +18,7 @@ export default function Header({ title }) {
   };
 
   return (
-    <section className=" container header">
+    <header className="header">
       <Link to="/profile">
         <img
           src={ profileIcon }
@@ -45,7 +45,7 @@ export default function Header({ title }) {
         )
       }
       { searchBar && <SearchBar /> }
-    </section>
+    </header>
   );
 }
 
