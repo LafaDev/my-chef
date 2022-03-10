@@ -8,7 +8,7 @@ export default function SearchBar() {
       <form>
 
         <label htmlFor="ingredient">
-          ingredient
+          Ingredient
 
           <input
             name="filter"
@@ -23,7 +23,7 @@ export default function SearchBar() {
 
           <input
             name="filter"
-            data-testid="name-search-radio"
+            data-testid="first-letter-search-radio"
             type="radio"
             id="letter"
           />
@@ -34,7 +34,7 @@ export default function SearchBar() {
 
           <input
             name="filter"
-            data-testid="ingredient-search-radio"
+            data-testid="name-search-radio"
             type="radio"
             id="name"
           />

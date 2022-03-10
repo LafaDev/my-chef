@@ -26,6 +26,11 @@ function App() {
     <Switch>
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ MainFoods } />
+      {/* <Route
+        exact
+        path="/foods"
+        render={ (propRoute) => (<MainFoods { ...propRoute } />) }
+      /> */}
       <Route exact path="/drinks" component={ MainDrinks } />
       {/*  */ }
       <Route path="/foods/:id" component={ Detail } />

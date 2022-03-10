@@ -28,7 +28,7 @@ export default function Loginscreen() {
   };
 
   const passwordValidation = ({ target }) => {
-    if (target.value.length >= MIN_CHAR) {
+    if (target.value.length > MIN_CHAR) {
       setPasswordDisable(false);
     } else {
       setPasswordDisable(true);
@@ -60,7 +60,7 @@ export default function Loginscreen() {
             <FaUser />
             <input
               id="email-input"
-              type="text"
+              type="email"
               data-testid="email-input"
               className="input-login inputEmail"
               placeholder="exemplo@exemplo"
@@ -82,7 +82,6 @@ export default function Loginscreen() {
             />
           </label>
         </form>
-
         <div className="btn">
           <button
             type="button"
@@ -93,11 +92,9 @@ export default function Loginscreen() {
           >
             Enter
           </button>
+          { redirect && <Redirect to="/foods" /> }
         </div>
-        { redirect && <Redirect to="/foods" /> }
-
       </div>
-
     </section>
   );
 }
