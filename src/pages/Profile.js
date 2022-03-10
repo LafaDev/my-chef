@@ -8,7 +8,7 @@ export default function Profile() {
   // Create new semi-header element *
 
   return (
-    <section className="container">
+    <section className="">
       <Header title="Profile" />
       <EmailHeader />
       <ProfileButtons />

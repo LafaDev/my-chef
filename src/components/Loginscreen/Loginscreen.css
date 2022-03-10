@@ -50,7 +50,7 @@
   padding: 10px;
   padding-left: 24px;
   transition: 0.5s;
-  width: 80%;
+  width: 90%;
 }
 
 .input-login:active, .input-login:focus, .input-login:hover {
@@ -93,7 +93,12 @@
   transform: translateY(-1px);
 }
 
-/* Small devices (landscape phones, less than 768px) */
+.btn-login:disabled {
+  color: #c2bbbb;
+  cursor: not-allowed;
+}
+
+/* Small devices (landscape phones, more than 600px) */
 
 @media ( min-width : 600px ) {
 
