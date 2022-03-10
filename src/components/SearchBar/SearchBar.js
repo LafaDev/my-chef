@@ -20,7 +20,7 @@ const ALERT = 'Sorry, we haven\'t found any recipes for these filters.';
 const NO_MORE_LETTERS = 'Your search must have only 1 (one) character';
 
 export default function SearchBar() {
-  const { currentPage, setSearch } = useContext(FilterContext);
+  const { currentPage, setSearch, setCategoryFilter } = useContext(FilterContext);
   const { setLoad } = useContext(MealAPIContext);
   const { setCocktailLoad } = useContext(CocktailAPIContext);
   const [input, setInput] = useState('');
@@ -49,8 +49,8 @@ export default function SearchBar() {
         setLoad(false);
         noResponseAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.meals);
-        console.log(results.meals);
         setLoad(false);
       }
       break;
@@ -61,6 +61,7 @@ export default function SearchBar() {
         // noResponseAlert();
         oneLetterAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.meals);
         setLoad(false);
       }
@@ -71,6 +72,7 @@ export default function SearchBar() {
         setLoad(false);
         noResponseAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.meals);
         setLoad(false);
       }
@@ -81,6 +83,7 @@ export default function SearchBar() {
         setLoad(false);
         noResponseAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.meals);
         setLoad(false);
       }
@@ -99,6 +102,7 @@ export default function SearchBar() {
         setCocktailLoad(false);
         noResponseAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.drinks);
         setCocktailLoad(false);
       }
@@ -109,6 +113,7 @@ export default function SearchBar() {
         setCocktailLoad(false);
         oneLetterAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.drinks);
         setCocktailLoad(false);
       }
@@ -119,6 +124,7 @@ export default function SearchBar() {
         setCocktailLoad(false);
         noResponseAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.drinks);
         setCocktailLoad(false);
       }
@@ -129,6 +135,7 @@ export default function SearchBar() {
         setCocktailLoad(false);
         noResponseAlert();
       } else {
+        setCategoryFilter([]);
         setSearch(results.drinks);
         setCocktailLoad(false);
       }

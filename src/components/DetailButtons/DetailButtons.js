@@ -19,14 +19,7 @@ export default function DetailButtons() {
         share
 
       </button>
-      <button
-        className="btn btnStart"
-        data-testid="start-recipe-btn"
-        type="button"
-      >
-        Start
 
-      </button>
     </section>
   );
 }

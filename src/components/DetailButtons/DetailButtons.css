@@ -3,6 +3,6 @@ h1 {
 }
 
 .btnStart {
-  height: 90vh;
+  bottom: 0;
   position: fixed;
 }

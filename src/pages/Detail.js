@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DetailButtons from '../components/DetailButtons/DetailButtons';
 import DetailIngredients from '../components/DetailIngredients/DetailIngredients';
@@ -12,9 +13,20 @@ export default function Detail({ match }) {
     <section className=" container containerDetail">
 
       <DetailTumb id={ match.params.id } url={ match.url } />
-      <DetailButtons />
+      <DetailButtons id={ match.params.id } />
       <DetailIngredients />
       <DetailInstructions />
+
+      <Link to={ `/foods/${match.params.id}/in-progress` }>
+        <button
+          className="btn btnStart"
+          data-testid="start-recipe-btn"
+          type="button"
+        >
+          Start
+        </button>
+      </Link>
+
       {
         match.url.includes('foods') ? <DetailVideo /> : null
       }
