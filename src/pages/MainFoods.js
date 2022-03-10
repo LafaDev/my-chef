@@ -23,6 +23,7 @@ export default function Main() {
     setCategoryFilter,
   } = useContext(FilterContext);
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const getCategories = async () => {
     const results = await fetchMealsCategories();
@@ -31,8 +32,21 @@ export default function Main() {
 
   const handleClick = ({ target }) => {
     setLoad(true);
+    if (selectedCategory === target.innerHTML) {
+      setCategoryFilter([]);
+      setSelectedCategory('');
+    } else {
+      handleCategoryFilter(target.innerHTML, 'foods');
+      setSelectedCategory(target.innerHTML);
+    }
     setSearch([]);
-    handleCategoryFilter(target.innerHTML, 'foods');
+    setLoad(false);
+  };
+
+  const handleAllFilter = () => {
+    setLoad(true);
+    setCategoryFilter([]);
+    setSearch([]);
     setLoad(false);
   };
 
@@ -49,6 +63,14 @@ export default function Main() {
       <Header title="Foods" className="header" />
 
       <section>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ handleAllFilter }
+          className="btn"
+        >
+          All
+        </button>
         {categories.map((category, i) => (i <= MAX_CATEGORIES
           && (
             <button

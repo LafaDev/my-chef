@@ -6,11 +6,6 @@ import LowerMenu from '../components/LowerMenu/LowerMenu';
 import '../styles/ExplorerType.css';
 
 export default function ExplorerType({ match }) {
-  // const ifLink = (firstURL, secondURL, condition) => {
-  //   condition ? <Link to={firstURL}>{children}</Link>
-  //   : <Link to={secondURL}>{children}</Link>
-  // }
-
   return (
     <section className="container">
       {match.url.includes('drinks') ? (
@@ -19,19 +14,27 @@ export default function ExplorerType({ match }) {
         />
       ) : <Header title="Explore Foods" /> }
 
-      <Link
-        to="/explore/drinks/ingredients"
-      >
-        <button
-          className="btn"
-          type="button"
-          data-testid="explore-by-ingredient"
-          enable
-        >
-          By Ingredient
-        </button>
-
-      </Link>
+      {match.url.includes('drinks') ? (
+        <Link to="/explore/drinks/ingredients">
+          <button
+            className="btn"
+            type="button"
+            data-testid="explore-by-ingredient"
+          >
+            By Ingredient
+          </button>
+        </Link>
+      ) : (
+        <Link to="/explore/foods/ingredients">
+          <button
+            className="btn"
+            type="button"
+            data-testid="explore-by-ingredient"
+          >
+            By Ingredient
+          </button>
+        </Link>
+      )}
       {match.url.includes('drinks') ? null
         : (
           <button

@@ -143,7 +143,11 @@ export default function SearchBar() {
   };
 
   const handleSearch = () => {
-    if (currentPage === 'foods') {
+    const radio = [...document.querySelectorAll('input')]
+      .find((inputs) => inputs.checked);
+    if (radio === undefined) {
+      alert('Please, choose a filter');
+    } else if (currentPage === 'foods') {
       handleFoods();
     } else if (currentPage === 'drinks') {
       handleDrinks();

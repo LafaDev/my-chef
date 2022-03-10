@@ -27,6 +27,7 @@ export default function Main() {
     setCategoryFilter,
   } = useContext(FilterContext);
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const getCategories = async () => {
     const results = await fetchDrinksCategories();
@@ -35,8 +36,21 @@ export default function Main() {
 
   const handleClick = ({ target }) => {
     setCocktailLoad(true);
+    if (selectedCategory === target.innerHTML) {
+      setCategoryFilter([]);
+      setSelectedCategory('');
+    } else {
+      handleCategoryFilter(target.innerHTML, 'drinks');
+      setSelectedCategory(target.innerHTML);
+    }
     setSearch([]);
-    handleCategoryFilter(target.innerHTML, 'drinks');
+    setCocktailLoad(false);
+  };
+
+  const handleAllFilter = () => {
+    setCocktailLoad(true);
+    setCategoryFilter([]);
+    setSearch([]);
     setCocktailLoad(false);
   };
 
@@ -53,6 +67,14 @@ export default function Main() {
       <Header title="Drinks" />
 
       <section>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ handleAllFilter }
+          className="btn"
+        >
+          All
+        </button>
         {categories.map((category, i) => (i <= MAX_CATEGORIES
           && (
             <button
