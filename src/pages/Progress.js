@@ -1,6 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
+import DetailButtons from '../components/DetailButtons/DetailButtons';
+import DetailTumb from '../components/DetailTumb/DetailTumb';
+import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 
 // import React, { useEffect, useContext } from 'react';
 // import PropTypes from 'prop-types';
@@ -20,7 +23,7 @@ export default function Progress() {
         cocktails: {},
         meals: {},
       };
-    } else if (url.pathname.includes(localRecipe.meals[reId])) {
+    } else if (url.pathname.includes(localRecipe[reId])) {
       console.log('inprogress meal');
     } else if (url.pathname.includes(localRecipe.cocktails[reId])) {
       console.log('inprogress drinks');
@@ -28,10 +31,10 @@ export default function Progress() {
       console.log('startprogress');
       if (url.pathname.includes('foods')) {
         localRecipe.meals = { ...meal };
-        localStorage.setItem(JSON.stringify(localRecipe));
+        localStorage.setItem('inProgressRecipes', JSON.stringify(localRecipe));
       } else if (url.pathname.includes(JSON.stringify('drinks'))) {
         localRecipe.meals = { ...drink };
-        localStorage.setItem(localRecipe);
+        localStorage.setItem('inProgressRecipes', localRecipe);
       }
     }
   };
@@ -43,9 +46,22 @@ export default function Progress() {
 
   return (
     <section className="container containerProgress">
-      <h1>
-        Blessed
-      </h1>
+      <DetailTumb
+        name={ meal.strMeal ? meal.strMeal : drink.strDrink }
+        thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
+        category={ meal.strMeal ? meal.strCategory : drink.strCategory }
+        alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
+      />
+      <DetailButtons />
+      {/* <detail */}
+
+      <DetailInstructions
+        inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
+      />
+
+      <button type="button" onClick={ () => console.log(meal) }> test </button>
+
+      <h1> </h1>
     </section>
   );
 }

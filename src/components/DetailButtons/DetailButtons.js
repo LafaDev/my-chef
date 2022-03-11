@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
 import blackHeart from '../../images/blackHeartIcon.svg';
+import useSetFav from '../../services/setFavorites';
 import './DetailButtons.css';
 
-export default function DetailButtons({ fav }) {
+export default function DetailButtons({ fav, meal, drink, id }) {
   const [linkCopy, setLinkCopy] = useState();
   const [favEr, setFavEr] = useState();
 
@@ -13,9 +14,9 @@ export default function DetailButtons({ fav }) {
     setLinkCopy(true);
   }
 
-  function handleFav() {
-    setFavEr(!favEr);
-  }
+  const HandleClick = () => {
+    useSetFav(favEr, setFavEr, { meal, drink, id });
+  };
 
   useEffect(() => { setLinkCopy(false); setFavEr(fav); }, []);
 
@@ -24,7 +25,7 @@ export default function DetailButtons({ fav }) {
       <button
         className="btn btnFav"
         type="button"
-        onClick={ handleFav }
+        onClick={ HandleClick }
       >
         <img
           alt="Favorite"

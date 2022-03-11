@@ -8,6 +8,7 @@ export default function DetailInstructions({ inst }) {
       className="container containerDetailInstructions"
       data-testid="instructions"
     >
+      <h2>Instruções</h2>
       <p>{inst}</p>
     </section>
   );

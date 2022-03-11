@@ -9,6 +9,7 @@ export default function DetailVideo({ video }) {
   return (
     <section className="container containerDetailVideo">
       <iframe
+        className=""
         title="Step-by-Step"
         width="560"
         height="315"

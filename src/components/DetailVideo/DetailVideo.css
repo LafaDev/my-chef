@@ -1,3 +1,11 @@
 h1 {
   color: black;
 }
+
+.containerDetailVideo {
+  width: 60%;
+}
+
+.video {
+  width: 80vw;
+}
