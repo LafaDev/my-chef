@@ -46,7 +46,6 @@ export default function Progress() {
       <h1>
         Blessed
       </h1>
-      <p>teste</p>
     </section>
   );
 }

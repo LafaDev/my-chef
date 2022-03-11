@@ -74,7 +74,7 @@ export default function Detail() {
         category={ meal.strMeal ? meal.strCategory : drink.strCategory }
         alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
       />
-      <DetailButtons id={ getId(url.pathname) } />
+      <DetailButtons id={ getId(url.pathname) } url={ url.pathname } />
       <DetailIngredients ingredients={ ingredients } measures={ measures } />
       <DetailInstructions
         inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
