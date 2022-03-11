@@ -13,8 +13,6 @@ export default function FilterContextProvider({ children }) {
   const [currentPage, setCurrentPage] = useState([]);
   const [search, setSearch] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState([]);
-  const [meal, setMeal] = useState({});
-  const [drink, setDrink] = useState({});
   // functions
   const handlePage = (page) => {
     setCurrentPage(page);
@@ -41,10 +39,6 @@ export default function FilterContextProvider({ children }) {
         categoryFilter,
         handleCategoryFilter,
         setCategoryFilter,
-        meal,
-        setMeal,
-        drink,
-        setDrink,
       } }
     >
       {children}

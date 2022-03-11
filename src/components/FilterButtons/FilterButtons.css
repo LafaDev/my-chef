@@ -1,0 +1,8 @@
+h1 {
+  color: black;
+}
+
+.btnStart {
+  bottom: 0;
+  position: fixed;
+}
