@@ -20,15 +20,15 @@ import Profile from './pages/Profile';
 
 // import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MealAPIContextProvider from './contexts/MealAPIContex';
-import CocktailAPIContextProvider from './contexts/CocktailsAPIContext';
+import GeneralAPIContextProvider from './contexts/GeneralAPIContext';
+import DetailsAPIContextProvider from './contexts/DetailsAPIContext';
 import FilterContextProvider from './contexts/FilterContext';
 
 function App() {
   return (
     <Switch>
-      <MealAPIContextProvider>
-        <CocktailAPIContextProvider>
+      <GeneralAPIContextProvider>
+        <DetailsAPIContextProvider>
           <FilterContextProvider>
             <Route exact path="/" component={ Login } />
             <Route exact path="/foods" component={ MainFoods } />
@@ -38,8 +38,8 @@ function App() {
             render={ (propRoute) => (<MainFoods { ...propRoute } />) }
           /> */}
             <Route exact path="/drinks" component={ MainDrinks } />
-            <Route path="/foods/:id" component={ Detail } />
-            <Route path="/drinks/:id" component={ Detail } />
+            <Route exact path="/foods/:id" component={ Detail } />
+            <Route exact path="/drinks/:id" component={ Detail } />
             <Route exact path="/foods/:id/in-progress" component={ Progress } />
             <Route exact path="/drinks/:id/in-progress" component={ Progress } />
             <Route exact path="/explore" component={ Explorer } />
@@ -64,8 +64,8 @@ function App() {
             <Route exact path="/done-recipes" component={ Done } />
             <Route exact path="/favorite-recipes" component={ Favorites } />
           </FilterContextProvider>
-        </CocktailAPIContextProvider>
-      </MealAPIContextProvider>
+        </DetailsAPIContextProvider>
+      </GeneralAPIContextProvider>
     </Switch>
   );
 }

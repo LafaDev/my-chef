@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FilterContext } from '../../contexts/FilterContext';
-import { MealAPIContext } from '../../contexts/MealAPIContex';
-import { CocktailAPIContext } from '../../contexts/CocktailsAPIContext';
+import { GeneralAPIContext } from '../../contexts/GeneralAPIContext';
 import {
   fetchMealsByName,
   fetchMealsByFirstLetter,
@@ -21,8 +20,7 @@ const NO_MORE_LETTERS = 'Your search must have only 1 (one) character';
 
 export default function SearchBar() {
   const { currentPage, setSearch, setCategoryFilter } = useContext(FilterContext);
-  const { setLoad } = useContext(MealAPIContext);
-  const { setCocktailLoad } = useContext(CocktailAPIContext);
+  const { setLoad, setCocktailLoad } = useContext(GeneralAPIContext);
   const [input, setInput] = useState('');
 
   const handleChange = ({ target }) => {

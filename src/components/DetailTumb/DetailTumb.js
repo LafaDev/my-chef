@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './DetailTumb.css';
 
-export default function DetailTumb({ thumb, name, category }) {
+export default function DetailTumb({ thumb, name, category, alcoholic }) {
   return (
     <section className="container containerDetailTumb">
       <img
@@ -15,7 +15,7 @@ export default function DetailTumb({ thumb, name, category }) {
         {name}
       </h3>
       <h4 data-testid="recipe-category">
-        {category}
+        {alcoholic ? `${alcoholic} ${category}` : category}
       </h4>
     </section>
   );
@@ -24,4 +24,5 @@ export default function DetailTumb({ thumb, name, category }) {
 DetailTumb.propTypes = {
   id: PropTypes.string,
   url: PropTypes.string,
+  alcoholic: PropTypes.string,
 }.isRequired;

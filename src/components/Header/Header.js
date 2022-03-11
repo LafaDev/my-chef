@@ -9,6 +9,14 @@ import './Header.css';
 export default function Header({ title }) {
   const [searchBar, setSearchBar] = useState(false);
 
+  const titleChecker = (tit) => tit !== 'Explorer'
+    && tit !== 'Explore Foods'
+    && tit !== 'Profile'
+    && tit !== 'Favorite Recipes'
+    && tit !== 'Done Recipes'
+    && tit !== 'Explore Ingredients'
+    && tit !== 'Explore Drinks';
+
   const handleClick = () => {
     if (searchBar === false) {
       setSearchBar(true);
@@ -33,7 +41,7 @@ export default function Header({ title }) {
       </h1>
 
       {
-        title !== 'Explorer' && title !== 'Profile' && (
+        titleChecker(title) && (
           <button type="button" onClick={ handleClick }>
             <img
               src={ searchIcon }

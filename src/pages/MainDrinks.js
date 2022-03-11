@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import Cards from '../components/Cards/Cards';
-import { CocktailAPIContext } from '../contexts/CocktailsAPIContext';
+import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
 import { FilterContext } from '../contexts/FilterContext';
 import { fetchDrinksCategories } from '../services/cocktailAPI';
 import Loading from '../components/Loading/Loading';
@@ -17,7 +17,7 @@ export default function Main() {
     cocktailLoad,
     cocktailResponse,
     setCocktailLoad,
-  } = useContext(CocktailAPIContext);
+  } = useContext(GeneralAPIContext);
   const {
     handlePage,
     search,

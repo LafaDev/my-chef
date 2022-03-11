@@ -1,14 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './DetailVideo.css';
 
-export default function DetailVideo() {
+export default function DetailVideo({ video }) {
+  const transform = String(video).split('=');
+  const embedded = `https://www.youtube.com/embed/${transform[1]}`;
+
   return (
     <section className="container containerDetailVideo">
       <iframe
         title="Step-by-Step"
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/thatthingonvideourl"
+        // src="https://www.youtube.com/embed/thatthingonvideourl"
+        src={ embedded }
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media;
          gyroscope; picture-in-picture"
@@ -18,3 +23,7 @@ export default function DetailVideo() {
     </section>
   );
 }
+
+DetailVideo.propTypes = {
+  video: PropTypes.string.isRequired,
+};
