@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import Cards from '../components/Cards/Cards';
-import { MealAPIContext } from '../contexts/MealAPIContex';
+import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
 import Loading from '../components/Loading/Loading';
 import { FilterContext } from '../contexts/FilterContext';
 import { fetchMealsCategories } from '../services/MealsAPI';
@@ -13,7 +13,7 @@ const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
 
 export default function Main() {
-  const { apiResponse, handleAPI, load, setLoad } = useContext(MealAPIContext);
+  const { apiResponse, handleAPI, load, setLoad } = useContext(GeneralAPIContext);
   const {
     handlePage,
     search,

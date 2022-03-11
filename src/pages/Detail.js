@@ -1,62 +1,80 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useEffect, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import DetailButtons from '../components/DetailButtons/DetailButtons';
 import DetailIngredients from '../components/DetailIngredients/DetailIngredients';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import DetailTumb from '../components/DetailTumb/DetailTumb';
 import DetailVideo from '../components/DetailVideo/DetailVideo';
-import { FilterContext } from '../contexts/FilterContext';
-import { fetchMealDetails } from '../services/MealsAPI';
-import { fetchDrinkDetails } from '../services/cocktailAPI';
+import RecomendRecipes from '../components/RecomendRecipes/RecomendRecipes';
+import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
+import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
 
-export default function Detail({ match }) {
-  const { currentPage } = useContext(FilterContext);
-  const [ingredients, setIngredients] = useState([]);
-  const [measures, setMeasures] = useState([]);
-  const [meal, setMeal] = useState({});
-  const [drink, setDrink] = useState({});
+const CheckDone = () => {
+  const url = useLocation();
+  const irD = JSON.parse(localStorage.getItem('doneRecipes'));
+  let isDone = true;
+  if (irD) {
+    irD.forEach((e) => {
+      if (e.id === getId(url.pathname)) isDone = false;
+    });
+  }
+  return isDone;
+};
 
-  const ingredientArray = (results) => {
-    const ingredientsArray = [];
-    const chaves = Object.keys(results)
-      .filter((key) => key.includes('Ingredient'));
-    chaves.forEach((chave) => ingredientsArray.push(results[chave]));
-    setIngredients(ingredientsArray);
-  };
+const CheckFavs = () => {
+  const url = useLocation();
+  const irD = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  let isFav = false;
+  if (irD) {
+    irD.forEach((e) => {
+      if (e.id === getId(url.pathname)) isFav = true;
+    });
+  }
+  return isFav;
+};
 
-  const measureArray = (results) => {
-    const measuresArray = [];
-    const chaves = Object.keys(results)
-      .filter((key) => key.includes('Measure'));
-    chaves.forEach((chave) => measuresArray.push(results[chave]));
-    setMeasures(measuresArray);
-  };
+const CheckProgress = () => {
+  const url = useLocation();
+  const irD = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  let inProgress = 'Start';
+  let urDPath;
+  if (irD && url.pathname.includes('drinks')) {
+    urDPath = 'cocktails';
+  } else if (url.pathname.includes('foods')) {
+    urDPath = 'meals';
+  }
+  if (irD && irD[urDPath][getId(url.pathname)]) inProgress = 'Continue Recipe';
+  return inProgress;
+};
 
-  const mealDetails = async () => {
-    const results = await fetchMealDetails(match.params.id);
-    setMeal(...results.meals);
-    ingredientArray(...results.meals);
-    measureArray(...results.meals);
-  };
-
-  const drinkDetails = async () => {
-    const results = await fetchDrinkDetails(match.params.id);
-    setDrink(...results.drinks);
-    ingredientArray(...results.drinks);
-    measureArray(...results.drinks);
-    console.log(...results.drinks);
-  };
+export default function Detail() {
+  const url = useLocation();
+  const {
+    meal,
+    mealDetails,
+    ingredients,
+    measures,
+    drink,
+    drinkDetails,
+  } = useContext(DetailsAPIContext);
+  const {
+    handleAPI,
+    apiResponse,
+    handleCocktailAPI,
+    cocktailResponse,
+  } = useContext(GeneralAPIContext);
 
   // strMeasure
 
   //   <- para cada key ? includes Ingredients
 
   useEffect(() => {
-    if (match.url.includes('foods')) {
-      mealDetails();
-    } else if (match.url.includes('drinks')) {
-      drinkDetails();
+    if (url.pathname.includes('foods')) {
+      mealDetails(getId(url.pathname));
+      handleCocktailAPI();
+    } else if (url.pathname.includes('drinks')) {
+      drinkDetails(getId(url.pathname));
+      handleAPI();
     }
   }, []);
 
@@ -66,28 +84,33 @@ export default function Detail({ match }) {
         name={ meal.strMeal ? meal.strMeal : drink.strDrink }
         thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
         category={ meal.strMeal ? meal.strCategory : drink.strCategory }
+        alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
       />
-      <DetailButtons id={ match.params.id } />
+      <DetailButtons fav={ CheckFavs() } />
       <DetailIngredients ingredients={ ingredients } measures={ measures } />
-      <DetailInstructions />
-
-      <Link to={ `/${currentPage}/${match.params.id}/in-progress` }>
-        <button
-          className="btn btnStart"
-          data-testid="start-recipe-btn"
-          type="button"
-        >
-          Start
-        </button>
+      <DetailInstructions
+        inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
+      />
+      <RecomendRecipes
+        url={ url.pathname }
+        apiResponse={ apiResponse }
+        cocktailResponse={ cocktailResponse }
+      />
+      <Link to={ `${url.pathname}/in-progress` }>
+        {CheckDone() && (
+          <button
+            className="btn btnStart"
+            data-testid="start-recipe-btn"
+            type="button"
+          >
+            {CheckProgress()}
+          </button>
+        )}
       </Link>
 
       {
-        match.url.includes('foods') ? <DetailVideo /> : null
+        url.pathname.includes('foods') ? <DetailVideo video={ meal.strYoutube } /> : null
       }
     </section>
   );
 }
-
-Detail.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-};

@@ -1,26 +1,44 @@
 import React, { useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
-import { FilterContext } from '../contexts/FilterContext';
+import { useLocation } from 'react-router-dom';
+import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
 
-export default function Progress({ match }) {
-  const { meal, drink } = useContext(FilterContext);
-  useEffect(() => {
-    const localRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
+// import React, { useEffect, useContext } from 'react';
+// import PropTypes from 'prop-types';
+// import { FilterContext } from '../contexts/FilterContext';
 
-    if (match.url.includes(localRecipe.meals.id)) {
+export default function Progress() {
+  const url = useLocation();
+  const reId = getId(url.pathname);
+  const {
+    meal,
+    drink,
+  } = useContext(DetailsAPIContext);
+
+  const setLore = (localRecipe) => {
+    if (!localRecipe) {
+      localRecipe = {
+        cocktails: {},
+        meals: {},
+      };
+    } else if (url.pathname.includes(localRecipe.meals[reId])) {
       console.log('inprogress meal');
-    } else if (match.url.includes(localRecipe.id)) {
+    } else if (url.pathname.includes(localRecipe.cocktails[reId])) {
       console.log('inprogress drinks');
     } else {
       console.log('startprogress');
-      if (match.url.includes('foods')) {
+      if (url.pathname.includes('foods')) {
         localRecipe.meals = { ...meal };
         localStorage.setItem(JSON.stringify(localRecipe));
-      } else if (match.url.includes(JSON.stringify('drinks'))) {
+      } else if (url.pathname.includes(JSON.stringify('drinks'))) {
         localRecipe.meals = { ...drink };
         localStorage.setItem(localRecipe);
       }
     }
+  };
+
+  useEffect(() => {
+    const localRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    setLore(localRecipe);
   }, []);
 
   return (
@@ -31,7 +49,3 @@ export default function Progress({ match }) {
     </section>
   );
 }
-
-Progress.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
-};
