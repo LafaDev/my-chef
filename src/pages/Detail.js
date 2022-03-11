@@ -21,6 +21,18 @@ const CheckDone = () => {
   return isDone;
 };
 
+const CheckFavs = () => {
+  const url = useLocation();
+  const irD = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  let isFav = false;
+  if (irD) {
+    irD.forEach((e) => {
+      if (e.id === getId(url.pathname)) isFav = true;
+    });
+  }
+  return isFav;
+};
+
 const CheckProgress = () => {
   const url = useLocation();
   const irD = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -74,7 +86,7 @@ export default function Detail() {
         category={ meal.strMeal ? meal.strCategory : drink.strCategory }
         alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
       />
-      <DetailButtons id={ getId(url.pathname) } url={ url.pathname } />
+      <DetailButtons fav={ CheckFavs() } />
       <DetailIngredients ingredients={ ingredients } measures={ measures } />
       <DetailInstructions
         inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
