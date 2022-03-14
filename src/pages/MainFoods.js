@@ -5,7 +5,7 @@ import Cards from '../components/Cards/Cards';
 import { MealAPIContext } from '../contexts/MealAPIContex';
 import Loading from '../components/Loading/Loading';
 import { FilterContext } from '../contexts/FilterContext';
-import '../styles/MainFoods.css';
+import '../styles/Main.css';
 
 export default function Main() {
   const { apiResponse, handleAPI, load } = useContext(MealAPIContext);
@@ -18,19 +18,19 @@ export default function Main() {
   }, []);
 
   return (
-    <section className="section">
+    <main className="section-food">
       <Header title="Foods" className="header" />
-
-      <div className="cards-container">
-        { load && (<Loading />) }
-        { search.length > 0 ? search.map((meal, i) => (i <= MAX_CARD_NUMBER)
-          && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))
-          : apiResponse.map((meal, i) => (i <= MAX_CARD_NUMBER)
-            && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+      <div className="main-container container">
+        <div className="cards-container">
+          { load && (<Loading />) }
+          { search.length > 0 ? search.map((meal, i) => (i <= MAX_CARD_NUMBER)
+            && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))
+            : apiResponse.map((meal, i) => (i <= MAX_CARD_NUMBER)
+              && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+        </div>
+        <LowerMenu />
       </div>
-
-      <LowerMenu />
-    </section>
+    </main>
   );
 }
 

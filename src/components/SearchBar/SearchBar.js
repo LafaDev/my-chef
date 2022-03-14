@@ -193,6 +193,7 @@ export default function SearchBar() {
           type="button"
           onClick={ handleSearch }
           data-testid="exec-search-btn"
+          className=""
         >
           Search
         </button>

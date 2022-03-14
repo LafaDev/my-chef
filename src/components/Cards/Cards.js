@@ -15,19 +15,39 @@ export default function Cards({
 }) {
   const { currentPage } = useContext(FilterContext);
 
+  const img = currentPage === 'foods' ? strMealThumb : strDrinkThumb;
+
   return (
-    <Link to={ currentPage === 'foods' ? `/foods/${idMeal}` : `/drinks/${idDrink}` }>
-      <article className="cards" data-testid={ `${index}-recipe-card` }>
+    <Link
+      to={ currentPage === 'foods' ? `/foods/${idMeal}` : `/drinks/${idDrink}` }
+      style={ {
+        backgroundImage: `url(
+        ${img})`,
+      } }
+      className="cards"
+    >
+      <div
+        data-testid={ `${index}-recipe-card` }
+        // style={ {
+        //   backgroundImage: `url(
+        //   ${img})`,
+        // } }
+        className="card-container"
+      >
         <img
-          src={ currentPage === 'foods' ? strMealThumb : strDrinkThumb }
+          src={ img }
           alt="strMealThumb"
           name={ currentPage === 'foods' ? strMeal : strDrink }
+          className="img-card"
           data-testid={ `${index}-card-img` }
         />
-        <span data-testid={ `${index}-card-name` }>
+        <span
+          data-testid={ `${index}-card-name` }
+          className="card-name"
+        >
           { currentPage === 'foods' ? strMeal : strDrink }
         </span>
-      </article>
+      </div>
     </Link>
   );
 }
