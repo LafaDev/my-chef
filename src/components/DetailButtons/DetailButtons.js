@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
 import blackHeart from '../../images/blackHeartIcon.svg';
+import shareIcon from '../../images/shareIcon.svg';
+import useSetFav from '../../services/setFavorites';
 import './DetailButtons.css';
 
-export default function DetailButtons({ fav }) {
+export default function DetailButtons({ fav, meal, drink, id, index }) {
   const [linkCopy, setLinkCopy] = useState();
   const [favEr, setFavEr] = useState();
 
@@ -13,9 +15,9 @@ export default function DetailButtons({ fav }) {
     setLinkCopy(true);
   }
 
-  function handleFav() {
-    setFavEr(!favEr);
-  }
+  const HandleClick = () => {
+    useSetFav(favEr, setFavEr, { meal, drink, id });
+  };
 
   useEffect(() => { setLinkCopy(false); setFavEr(fav); }, []);
 
@@ -24,21 +26,28 @@ export default function DetailButtons({ fav }) {
       <button
         className="btn btnFav"
         type="button"
-        onClick={ handleFav }
+        onClick={ HandleClick }
       >
         <img
           alt="Favorite"
-          data-testid="favorite-btn"
+          data-testid={ index !== undefined
+            ? `${index}-horizontal-favorite-btn` : 'favorite-btn' }
           src={ favEr ? blackHeart : whiteHeart }
         />
       </button>
       <button
         className="btn btnShare"
-        data-testid="share-btn"
+        // data-testid={ index !== undefined
+        //   ? `${index}-horizontal-share-btn` : 'share-btn' }
         type="button"
         onClick={ handleShare }
       >
-        share
+        <img
+          alt="share"
+          data-testid={ index !== undefined
+            ? `${index}-horizontal-share-btn` : 'share-btn' }
+          src={ shareIcon }
+        />
       </button>
       { linkCopy && (<p>Link copied!</p>)}
     </section>

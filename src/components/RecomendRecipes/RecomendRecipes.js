@@ -11,7 +11,11 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
       {url.includes('foods') && cocktailResponse.map(
         (e, i) => (i <= MAX_CARD_NUMBER)
         && (
-          <section key={ `rec-${i}` } data-testid={ `${i}-recomendation-card` }>
+          <section
+            className="reccard"
+            key={ `rec-${i}` }
+            data-testid={ `${i}-recomendation-card` }
+          >
             recomendations
             {' '}
             {i}
@@ -22,7 +26,11 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
       {url.includes('drinks') && apiResponse.map(
         (e, i) => (i <= MAX_CARD_NUMBER)
         && (
-          <section key={ `rec-${i}` } data-testid={ `${i}-recomendation-card` }>
+          <section
+            className="reccard"
+            key={ `rec-${i}` }
+            data-testid={ `${i}-recomendation-card` }
+          >
             recomendation
             {' '}
             {i}
