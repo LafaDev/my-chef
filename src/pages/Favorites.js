@@ -6,7 +6,6 @@ import FavoriteCards from '../components/FavoriteCards/FavoriteCards';
 export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
   const [allFavs, setAllFavs] = useState([]);
-  // const [filteredFavs, setFilteredFavs]
 
   const handleFavorites = () => {
     setFavorites(JSON.parse(localStorage.getItem('favoriteRecipes')));
@@ -14,8 +13,6 @@ export default function Favorites() {
   };
 
   const handleFilters = ({ target }) => {
-    // handleFavorites();
-    // setFavorites(allFavs);
     switch (target.name) {
     case 'food':
       setFavorites(allFavs.filter((receita) => receita.type === 'food'));
@@ -34,7 +31,7 @@ export default function Favorites() {
 
   return (
     <section className="container">
-      <Header title="Favorite Recipes" />
+      <Header title="Favorite Recipes" className="header" />
       <FilterButtons
         handleFilters={ handleFilters }
       />

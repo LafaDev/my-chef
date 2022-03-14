@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './FilterButtons.css';
 
 export default function FilterButtons({ handleFilters }) {
   return (
-    <section className="container containerDetailButtons">
+    <section className="container containerDetailButtons filter-buttons">
       <button
         className="btn btnFoods"
         type="button"

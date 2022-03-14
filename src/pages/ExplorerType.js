@@ -27,49 +27,50 @@ export default function ExplorerType({ match }) {
           title="Explore Drinks"
         />
       ) : <Header title="Explore Foods" /> }
-
-      {match.url.includes('drinks') ? (
-        <Link to="/explore/drinks/ingredients">
-          <button
-            className="btn"
-            type="button"
-            data-testid="explore-by-ingredient"
-          >
-            By Ingredient
-          </button>
-        </Link>
-      ) : (
-        <Link to="/explore/foods/ingredients">
-          <button
-            className="btn"
-            type="button"
-            data-testid="explore-by-ingredient"
-          >
-            By Ingredient
-          </button>
-        </Link>
-      )}
-      {match.url.includes('drinks') ? null
-        : (
-          <Link to="/explore/foods/nationalities">
+      <div className="buttons">
+        {match.url.includes('drinks') ? (
+          <Link to="/explore/drinks/ingredients">
             <button
               className="btn"
               type="button"
-              data-testid="explore-by-nationality"
+              data-testid="explore-by-ingredient"
             >
-              By Nationality
+              By Ingredient
             </button>
           </Link>
-        ) }
-      <button
-        type="button"
-        className="btn"
-        data-testid="explore-surprise"
-        onClick={ handleSurprise }
-      >
-        Surprise me!
-        {' '}
-      </button>
+        ) : (
+          <Link to="/explore/foods/ingredients">
+            <button
+              className="btn"
+              type="button"
+              data-testid="explore-by-ingredient"
+            >
+              By Ingredient
+            </button>
+          </Link>
+        )}
+        {match.url.includes('drinks') ? null
+          : (
+            <Link to="/explore/foods/nationalities">
+              <button
+                className="btn"
+                type="button"
+                data-testid="explore-by-nationality"
+              >
+                By Nationality
+              </button>
+            </Link>
+          ) }
+        <button
+          type="button"
+          className="btn"
+          data-testid="explore-surprise"
+          onClick={ handleSurprise }
+        >
+          Surprise me!
+          {' '}
+        </button>
+      </div>
       <LowerMenu />
     </section>
   );

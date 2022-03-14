@@ -5,6 +5,7 @@ import { fetchDrinksIngredients } from '../services/cocktailAPI';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import IngredientsCard from '../components/IngredientsCard/IngredientsCard';
+import '../styles/ExploreIngredients.css';
 
 export default function ExploreIngredients({ match }) {
   const [ingredients, setIngredients] = useState([]);
@@ -25,11 +26,12 @@ export default function ExploreIngredients({ match }) {
   }, []);
 
   return (
-    <section>
-      <Header title="Explore Ingredients" />
-      {ingredients
-        .map(
-          (ingredient, i) => i <= MAX_INGREDIENTS
+    <section className="section-food">
+      <Header title="Explore Ingredients" className="header" />
+      <div className="buttons-container">
+        {ingredients
+          .map(
+            (ingredient, i) => i <= MAX_INGREDIENTS
           && (
             <IngredientsCard
               ingredient={ ingredient }
@@ -37,7 +39,8 @@ export default function ExploreIngredients({ match }) {
               key={ match.url.includes('foods')
                 ? ingredient.idIngredient : ingredient.strIngredient1 }
             />),
-        )}
+          )}
+      </div>
       <LowerMenu />
     </section>
   );
