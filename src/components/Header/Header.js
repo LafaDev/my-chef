@@ -27,7 +27,11 @@ export default function Header({ title }) {
 
   return (
     <header className="header">
-      <Link to="/profile">
+      <Link
+        to="/profile"
+        className="header-link"
+        title="Ir para Perfil"
+      >
         <img
           src={ profileIcon }
           className="icon headerIcon"
