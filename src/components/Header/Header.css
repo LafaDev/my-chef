@@ -1,5 +1,56 @@
 .header {
-  background-color: rgba(127, 255, 212, 0.541);
+  align-items: center;
+  background-color: rgba(2, 2, 2, 0.725);
   display: flex;
   justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.header-link {
+  background-color: #ff792e;
+  border: 2px solid #f1f1f1;
+  border-radius: 50px;
+  color: #f1f1f1;
+  padding: 10px;
+  transition: background 0.5s;
+}
+
+.header-link:hover {
+  background-color: #f1f1f1;
+  border: 2px solid #ff792e;
+}
+
+.header-title {
+  color: #f1f1f1;
+  cursor: pointer;
+  letter-spacing: 0.42rem;
+  padding: 0 10px;
+  position: relative;
+}
+
+.header-title:after {
+  background-color: #f1f1f1;
+  bottom: -10px;
+  content: '';
+  height: 3px;
+  left: 0;
+  position: absolute;
+  transition: 0.42s;
+  width: 0;
+}
+
+.header-title:hover {
+  color: white;
+}
+
+.header-title:hover:after {
+  width: 100%;
+}
+
+.button {
+  border: 2px solid #f1f1f1;
+}
+
+.icon {
+  width: 1.5rem;
 }

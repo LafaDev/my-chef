@@ -7,7 +7,7 @@ import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
 import Loading from '../components/Loading/Loading';
 import { FilterContext } from '../contexts/FilterContext';
 import { fetchMealsCategories } from '../services/MealsAPI';
-import '../styles/MainFoods.css';
+import '../styles/Main.css';
 
 const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
@@ -59,46 +59,46 @@ export default function Main() {
   }, []);
 
   return (
-    <main className="section">
+    <main className="section-food">
       <Header title="Foods" className="header" />
+      <div className="main-container container">
+        <section>
+          <button
+            type="button"
+            data-testid="All-category-filter"
+            onClick={ handleAllFilter }
+            className="btn"
+          >
+            All
+          </button>
+          { categories.map((category, i) => (i <= MAX_CATEGORIES
+            && (
+              <button
+                type="button"
+                data-testid={ `${category.strCategory}-category-filter` }
+                key={ category.strCategory }
+                className="btn"
+                onClick={ handleClick }
+              >
+                { category.strCategory }
+              </button>))) }
+        </section>
 
-      <section>
-        <button
-          type="button"
-          data-testid="All-category-filter"
-          onClick={ handleAllFilter }
-          className="btn"
-        >
-          All
-        </button>
-        {categories.map((category, i) => (i <= MAX_CATEGORIES
-          && (
-            <button
-              type="button"
-              data-testid={ `${category.strCategory}-category-filter` }
-              key={ category.strCategory }
-              className="btn"
-              onClick={ handleClick }
-            >
-              {category.strCategory}
-            </button>)))}
-      </section>
+        <div className="cards-container">
+          { load && (<Loading />) }
+          { search.length > 0 && search.map((meal, i) => (i <= MAX_CARD_NUMBER)
+            && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+          { search.length === 0 && categoryFilter.length === 0
+            && apiResponse.map((meal, i) => (i <= MAX_CARD_NUMBER)
+              && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+          { search.length === 1 && <Redirect to={ `/foods/${search[0].idMeal}` } /> }
+          { categoryFilter.length > 0 && categoryFilter
+            .map((meal, i) => (i <= MAX_CARD_NUMBER)
+              && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+        </div>
 
-      <div className="cards-container">
-        {load && (<Loading />)}
-        {search.length > 0 && search.map((meal, i) => (i <= MAX_CARD_NUMBER)
-        && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))}
-        {search.length === 0 && categoryFilter.length === 0
-        && apiResponse.map((meal, i) => (i <= MAX_CARD_NUMBER)
-                    && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))}
-        {search.length === 1 && <Redirect to={ `/foods/${search[0].idMeal}` } />}
-        {categoryFilter.length > 0 && categoryFilter
-          .map((meal, i) => (i <= MAX_CARD_NUMBER)
-        && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))}
+        <LowerMenu />
       </div>
-
-      <LowerMenu />
-
     </main>
   );
 }

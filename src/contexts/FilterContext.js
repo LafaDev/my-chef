@@ -41,7 +41,7 @@ export default function FilterContextProvider({ children }) {
         setCategoryFilter,
       } }
     >
-      {children}
+      { children }
     </FilterContext.Provider>
   );
 }

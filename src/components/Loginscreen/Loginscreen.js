@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { FaLock, FaUser } from 'react-icons/fa';
+import { Redirect } from 'react-router-dom';
 import './Loginscreen.css';
 
 const MIN_CHAR = 6;
@@ -94,7 +94,7 @@ export default function Loginscreen() {
             Enter
           </button>
         </div>
-        {redirect && <Redirect to="/foods" />}
+        { redirect && <Redirect to="/foods" /> }
 
       </div>
 

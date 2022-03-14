@@ -79,7 +79,7 @@ export default function Detail() {
   }, []);
 
   return (
-    <section className=" container containerDetail">
+    <main className="containerDetail container">
       <DetailTumb
         name={ meal.strMeal ? meal.strMeal : drink.strDrink }
         thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
@@ -102,20 +102,20 @@ export default function Detail() {
         cocktailResponse={ cocktailResponse }
       />
       <Link to={ `${url.pathname}/in-progress` }>
-        {CheckDone() && (
+        { CheckDone() && (
           <button
             className="btn btnStart"
             data-testid="start-recipe-btn"
             type="button"
           >
-            {CheckProgress()}
+            { CheckProgress() }
           </button>
-        )}
+        ) }
       </Link>
 
       {
         url.pathname.includes('foods') ? <DetailVideo video={ meal.strYoutube } /> : null
       }
-    </section>
+    </main>
   );
 }

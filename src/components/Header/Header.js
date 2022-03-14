@@ -27,32 +27,41 @@ export default function Header({ title }) {
 
   return (
     <header className="header">
-      <Link to="/profile">
+      <Link
+        to="/profile"
+        className="header-link"
+        title="Ir para Perfil"
+      >
         <img
           src={ profileIcon }
-          className="icon headerIcon"
+          className="icon header-icon"
           data-testid="profile-top-btn"
           alt="profile-icon"
         />
       </Link>
 
-      <h1 data-testid="page-title">
+      <h1 data-testid="page-title" className="header-title">
         { title }
       </h1>
 
       {
         titleChecker(title) && (
-          <button type="button" onClick={ handleClick }>
+          <button
+            type="button"
+            onClick={ handleClick }
+            className="button header-link"
+            title="Pesquisar recitas"
+          >
             <img
               src={ searchIcon }
-              className="icon headerIcon"
+              className="icon header-icon"
               alt="search-icon"
               data-testid="search-top-btn"
             />
           </button>
         )
       }
-      {searchBar && <SearchBar />}
+      { searchBar && <SearchBar /> }
     </header>
   );
 }
