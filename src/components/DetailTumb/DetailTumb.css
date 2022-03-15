@@ -1,3 +1,8 @@
-h1 {
-  color: black;
+.containerDetailTumb {
+  padding-top: 10px;
+}
+
+.img-details {
+  border: 2px solid #FF7B00;
+  border-radius: 5px;
 }

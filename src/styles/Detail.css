@@ -1,5 +1,16 @@
+.containerDetail {
+  background-color: #ffe15c;
+}
+
+.c-detail {
+  padding-bottom: 50px;
+}
+
 .btnStart {
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
+  background-color: red;
   bottom: 0;
   position: fixed;
+  text-align: center;
+  width: 100%;
 }

@@ -4,19 +4,20 @@ import './DetailTumb.css';
 
 export default function DetailTumb({ thumb, name, category, alcoholic }) {
   return (
-    <section className="container containerDetailTumb">
+    <section className="containerDetailTumb">
       <img
         src={ thumb }
         data-testid="recipe-photo"
         alt={ `${name} Thumb` }
         name={ name }
+        className="img-details"
       />
       <h3 data-testid="recipe-title">
-        {name}
+        { name }
       </h3>
-      <h4 data-testid="recipe-category">
-        {alcoholic ? `${alcoholic} ${category}` : category}
-      </h4>
+      <p data-testid="recipe-category">
+        { alcoholic ? `${alcoholic} ${category}` : category }
+      </p>
     </section>
   );
 }

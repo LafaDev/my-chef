@@ -8,6 +8,7 @@ import DetailVideo from '../components/DetailVideo/DetailVideo';
 import RecomendRecipes from '../components/RecomendRecipes/RecomendRecipes';
 import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
 import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
+import '../styles/Detail.css';
 
 const CheckDone = () => {
   const url = useLocation();
@@ -79,32 +80,34 @@ export default function Detail() {
   }, []);
 
   return (
-    <main className="containerDetail container">
-      <DetailTumb
-        name={ meal.strMeal ? meal.strMeal : drink.strDrink }
-        thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
-        category={ meal.strMeal ? meal.strCategory : drink.strCategory }
-        alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
-      />
-      <DetailButtons
-        fav={ CheckFavs() }
-        meal={ meal }
-        drink={ drink }
-        id={ meal.idMeal ? meal.idMeal : drink.idDrink }
-      />
-      <DetailIngredients ingredients={ ingredients } measures={ measures } />
-      <DetailInstructions
-        inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
-      />
-      <RecomendRecipes
-        url={ url.pathname }
-        apiResponse={ apiResponse }
-        cocktailResponse={ cocktailResponse }
-      />
-      <Link to={ `${url.pathname}/in-progress` }>
+    <main className="containerDetail">
+      <div className="container c-details">
+        <DetailTumb
+          name={ meal.strMeal ? meal.strMeal : drink.strDrink }
+          thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
+          category={ meal.strMeal ? meal.strCategory : drink.strCategory }
+          alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
+        />
+        <DetailButtons
+          fav={ CheckFavs() }
+          meal={ meal }
+          drink={ drink }
+          id={ meal.idMeal ? meal.idMeal : drink.idDrink }
+        />
+        <DetailIngredients ingredients={ ingredients } measures={ measures } />
+        <DetailInstructions
+          inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
+        />
+        <RecomendRecipes
+          url={ url.pathname }
+          apiResponse={ apiResponse }
+          cocktailResponse={ cocktailResponse }
+        />
+      </div>
+      <Link to={ `${url.pathname}/in-progress` } className="btnStart">
         { CheckDone() && (
           <button
-            className="btn btnStart"
+            className=""
             data-testid="start-recipe-btn"
             type="button"
           >
@@ -114,7 +117,8 @@ export default function Detail() {
       </Link>
 
       {
-        url.pathname.includes('foods') ? <DetailVideo video={ meal.strYoutube } /> : null
+        url.pathname.includes('foods')
+          ? <DetailVideo video={ meal.strYoutube } /> : null
       }
     </main>
   );

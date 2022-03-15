@@ -66,6 +66,7 @@ export default function Main() {
   return (
     <main className="section-drink">
       <Header title="Drinks" className="header" />
+
       <section className="main-container container">
         <section>
           <button

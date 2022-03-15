@@ -7,7 +7,7 @@ export default function DetailVideo({ video }) {
   const embedded = `https://www.youtube.com/embed/${transform[1]}`;
 
   return (
-    <section className="container containerDetailVideo">
+    <section className="containerDetailVideo">
       <iframe
         className=""
         title="Step-by-Step"

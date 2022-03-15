@@ -22,9 +22,9 @@ export default function DetailButtons({ fav, meal, drink, id, index }) {
   useEffect(() => { setLinkCopy(false); setFavEr(fav); }, []);
 
   return (
-    <section className="container containerDetailButtons">
+    <section className="containerDetailButtons">
       <button
-        className="btn btnFav"
+        className="btn-details btnFav"
         type="button"
         onClick={ HandleClick }
       >
@@ -33,10 +33,12 @@ export default function DetailButtons({ fav, meal, drink, id, index }) {
           data-testid={ index !== undefined
             ? `${index}-horizontal-favorite-btn` : 'favorite-btn' }
           src={ favEr ? blackHeart : whiteHeart }
+          className="img-detail"
+          title="Favorite"
         />
       </button>
       <button
-        className="btn btnShare"
+        className="btn-details btnShare"
         // data-testid={ index !== undefined
         //   ? `${index}-horizontal-share-btn` : 'share-btn' }
         type="button"
@@ -47,9 +49,11 @@ export default function DetailButtons({ fav, meal, drink, id, index }) {
           data-testid={ index !== undefined
             ? `${index}-horizontal-share-btn` : 'share-btn' }
           src={ shareIcon }
+          className="img-detail"
+          title="Share"
         />
       </button>
-      { linkCopy && (<p>Link copied!</p>)}
+      { linkCopy && (<p>Link copied!</p>) }
     </section>
   );
 }
