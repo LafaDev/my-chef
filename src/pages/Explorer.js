@@ -8,7 +8,7 @@ import '../styles/Explorer.css';
 export default function Explorer() {
   const { setCurrentPage } = useContext(FilterContext);
   return (
-    <section className="container-explorer">
+    <section className="section-explorer">
       <Header title="Explorer" className="header" />
       <section className="explore">
         <Link to="/explore/foods">

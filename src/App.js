@@ -27,10 +27,10 @@ import FilterContextProvider from './contexts/FilterContext';
 
 function App() {
   return (
-    <Switch>
-      <GeneralAPIContextProvider>
-        <DetailsAPIContextProvider>
-          <FilterContextProvider>
+    <GeneralAPIContextProvider>
+      <DetailsAPIContextProvider>
+        <FilterContextProvider>
+          <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/foods" component={ MainFoods } />
             {/* <Route
@@ -65,10 +65,10 @@ function App() {
             <Route exact path="/done-recipes" component={ Done } />
             <Route exact path="/favorite-recipes" component={ Favorites } />
             <Route component={ NotFound } />
-          </FilterContextProvider>
-        </DetailsAPIContextProvider>
-      </GeneralAPIContextProvider>
-    </Switch>
+          </Switch>
+        </FilterContextProvider>
+      </DetailsAPIContextProvider>
+    </GeneralAPIContextProvider>
   );
 }
 
