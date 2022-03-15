@@ -17,6 +17,7 @@ import ExplorerType from './pages/ExplorerType';
 import Favorites from './pages/Favorites';
 import Progress from './pages/Progress';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 // import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -63,6 +64,7 @@ function App() {
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/done-recipes" component={ Done } />
             <Route exact path="/favorite-recipes" component={ Favorites } />
+            <Route component={ NotFound } />
           </FilterContextProvider>
         </DetailsAPIContextProvider>
       </GeneralAPIContextProvider>
