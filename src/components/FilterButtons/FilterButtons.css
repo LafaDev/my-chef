@@ -6,3 +6,7 @@ h1 {
   bottom: 0;
   position: fixed;
 }
+
+.filter-buttons {
+  padding: 100px 0 0;
+}

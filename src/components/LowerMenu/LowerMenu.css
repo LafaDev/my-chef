@@ -1,8 +1,23 @@
-img {
-  width: 3rem;
+.lowerIcon {
+  transition: all 0.2s ease;
+  width: 2rem;
+}
+
+.lowerIcon:hover {
+  transform: translateY(-7px);
 }
 
 .lowerMenu {
+  align-items: center;
+  background-color: #ff7b2ec7;
+  border-radius: 20px;
   bottom: 0;
+  color: #f1f1f1;
+  cursor: pointer;
+  display: flex;
+  gap: 3rem;
+  padding: 15px;
+  padding-bottom: 10px;
   position: fixed;
+  width: auto;
 }

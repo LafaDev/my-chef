@@ -4,7 +4,7 @@ import './DetailTumb.css';
 
 export default function DetailTumb({ thumb, name, category, alcoholic }) {
   return (
-    <section className="container containerDetailTumb">
+    <section className="containerDetailTumb">
       <img
         src={ thumb }
         data-testid="recipe-photo"

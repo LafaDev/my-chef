@@ -1,8 +1,24 @@
-h1 {
-  color: black;
+.containerDetailButtons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 1rem;
 }
 
 .btnStart {
   bottom: 0;
   position: fixed;
+}
+
+.btn-details {
+  background: none;
+  border: none;
+  transition: all 0.32s;
+}
+
+.btn-details:hover {
+  transform: translateY(-7px);
+}
+
+.img-detail {
+  width: 1.8rem;
 }

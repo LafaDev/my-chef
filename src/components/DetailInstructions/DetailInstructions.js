@@ -5,7 +5,7 @@ import './DetailInstructions.css';
 export default function DetailInstructions({ inst }) {
   return (
     <section
-      className="container containerDetailInstructions"
+      className="containerDetailInstructions"
       data-testid="instructions"
     >
       <h2>Instruções</h2>

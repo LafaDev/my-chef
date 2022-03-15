@@ -4,14 +4,14 @@ import './DetailIngredients.css';
 
 export default function DetailIngredients({ ingredients, measures }) {
   return (
-    <section className="container containerDetailIngredients">
+    <section className="containerDetailIngredients">
       <h2> Ingredientes </h2>
       {ingredients.map((ingredient, i) => ingredient && (
         <div key={ ingredient }>
           <p
             data-testid={ `${i}-ingredient-name-and-measure` }
           >
-            { `${ingredient} ${measures[i] === '' ? '' : measures[i]}` }
+            { `${ingredient} ${measures[i] === null ? '' : measures[i]}` }
           </p>
         </div>
       ))}

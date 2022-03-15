@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import DetailButtons from '../DetailButtons/DetailButtons';
 import './FavoriteCards.css';
 
-export default function FavoriteCards({ recepie, index }) {
+export default function FavoriteCards({ recepie, index, handleFavorites }) {
   return (
     <div>
       <Link
@@ -30,7 +30,12 @@ export default function FavoriteCards({ recepie, index }) {
         </article>
       </Link>
 
-      <DetailButtons index={ index } />
+      <DetailButtons
+        index={ index }
+        fav
+        recepie={ recepie }
+        handleFavorites={ handleFavorites }
+      />
     </div>
   );
 }

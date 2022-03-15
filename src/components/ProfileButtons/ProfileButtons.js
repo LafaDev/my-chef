@@ -8,7 +8,7 @@ export default function ProfileButtons() {
   };
 
   return (
-    <section className="container containerProfileButtons">
+    <section className="container containerProfileButtons buttons-container">
       <Link to="/done-recipes">
         <button type="button" data-testid="profile-done-btn"> Done Recipes </button>
       </Link>

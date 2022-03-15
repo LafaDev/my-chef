@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './FilterButtons.css';
 
-export default function FilterButtons() {
-  const handleFilters = () => {
-    console.log('lhahu');
-  };
-
+export default function FilterButtons({ handleFilters }) {
   return (
-    <section className="container containerDetailButtons">
+    <section className="container containerDetailButtons filter-buttons">
       <button
         className="btn btnFoods"
         type="button"
+        name="food"
         data-testid="filter-by-food-btn"
         onClick={ handleFilters }
       >
@@ -19,6 +17,7 @@ export default function FilterButtons() {
       <button
         className="btn btnDrinks"
         type="button"
+        name="drinks"
         data-testid="filter-by-drink-btn"
         onClick={ handleFilters }
       >

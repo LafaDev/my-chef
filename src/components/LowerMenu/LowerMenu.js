@@ -1,9 +1,9 @@
 import React from 'react';
-import './LowerMenu.css';
 import { Link } from 'react-router-dom';
 import drinkIcon from '../../images/drinkIcon.svg';
 import exploreIcon from '../../images/exploreIcon.svg';
 import mealIcon from '../../images/mealIcon.svg';
+import './LowerMenu.css';
 
 export default function LowerMenu() {
   return (
