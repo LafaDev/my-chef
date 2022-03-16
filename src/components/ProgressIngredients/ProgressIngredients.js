@@ -10,9 +10,9 @@ export default function ProgressIngredients({ ingredients, measures, setDisabled
 
   const handleChecked = () => {
     const recepies = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (url.pathname.includes('foods') && recepies) {
+    if (url.pathname.includes('foods') && recepies && recepies.meals[id]) {
       setIngs(recepies.meals[id]);
-    } else if (url.pathname.includes('drinks') && recepies) {
+    } else if (url.pathname.includes('drinks') && recepies && recepies.cocktails[id]) {
       setIngs(recepies.cocktails[id]);
     }
   };
@@ -41,7 +41,6 @@ export default function ProgressIngredients({ ingredients, measures, setDisabled
   };
 
   useEffect(() => {
-    setIngs([]);
     handleChecked();
   }, []);
 
