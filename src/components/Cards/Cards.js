@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { FilterContext } from '../../contexts/FilterContext';
+import { Link, useLocation } from 'react-router-dom';
 import './Cards.css';
 
 export default function Cards({
@@ -13,13 +12,13 @@ export default function Cards({
   strDrink,
   index,
 }) {
-  const { currentPage } = useContext(FilterContext);
+  const url = useLocation();
 
-  const img = currentPage === 'foods' ? strMealThumb : strDrinkThumb;
+  const img = url.pathname.includes('foods') ? strMealThumb : strDrinkThumb;
 
   return (
     <Link
-      to={ currentPage === 'foods' ? `/foods/${idMeal}` : `/drinks/${idDrink}` }
+      to={ url.pathname.includes('foods') ? `/foods/${idMeal}` : `/drinks/${idDrink}` }
       style={ {
         backgroundImage: `url(
         ${img})`,
@@ -37,7 +36,7 @@ export default function Cards({
         <img
           src={ img }
           alt="strMealThumb"
-          name={ currentPage === 'foods' ? strMeal : strDrink }
+          name={ url.pathname.includes('foods') ? strMeal : strDrink }
           className="img-card"
           data-testid={ `${index}-card-img` }
         />
@@ -45,7 +44,7 @@ export default function Cards({
           data-testid={ `${index}-card-name` }
           className="card-name"
         >
-          { currentPage === 'foods' ? strMeal : strDrink }
+          { url.pathname.includes('foods') ? strMeal : strDrink }
         </span>
       </div>
     </Link>

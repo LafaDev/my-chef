@@ -1,47 +1,68 @@
-import React, { useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
-import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
+import React, { useEffect, useContext, useState } from 'react';
+import { useLocation, useParams, useHistory } from 'react-router-dom';
+import { DetailsAPIContext } from '../contexts/DetailsAPIContext';
 import DetailButtons from '../components/DetailButtons/DetailButtons';
 import DetailTumb from '../components/DetailTumb/DetailTumb';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
-
+import ProgressIngredients from '../components/ProgressIngredients/ProgressIngredients';
 // import React, { useEffect, useContext } from 'react';
 // import PropTypes from 'prop-types';
 // import { FilterContext } from '../contexts/FilterContext';
 
+const CheckFavs = (id) => {
+  const irD = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  let isFav = false;
+  if (irD) {
+    irD.forEach((e) => {
+      if (e.id === id) isFav = true;
+    });
+  }
+  return isFav;
+};
+
+const setProgress = (localRecipe, id, url) => {
+  if (!localRecipe.meals[id] && url.pathname.includes('foods')) {
+    localRecipe.meals = { ...localRecipe.meals, [id]: [] };
+    localStorage.setItem('inProgressRecipes', JSON.stringify(localRecipe));
+  } else if (!localRecipe.cocktails[id] && url.pathname.includes('drinks')) {
+    localRecipe.cocktails = {
+      ...localRecipe.cocktails, [id]: [] };
+    localStorage.setItem('inProgressRecipes', JSON.stringify(localRecipe));
+  }
+};
+
 export default function Progress() {
   const url = useLocation();
-  const reId = getId(url.pathname);
+  const { id } = useParams();
+  const history = useHistory();
   const {
+    mealDetails,
+    drinkDetails,
     meal,
     drink,
+    ingredients,
+    measures,
   } = useContext(DetailsAPIContext);
+  const [disabled, setDisabled] = useState(true);
 
-  const setLore = (localRecipe) => {
-    if (!localRecipe) {
-      localRecipe = {
-        cocktails: {},
-        meals: {},
-      };
-    } else if (url.pathname.includes(localRecipe[reId])) {
-      console.log('inprogress meal');
-    } else if (url.pathname.includes(localRecipe.cocktails[reId])) {
-      console.log('inprogress drinks');
-    } else {
-      console.log('startprogress');
-      if (url.pathname.includes('foods')) {
-        localRecipe.meals = { ...meal };
-        localStorage.setItem('inProgressRecipes', JSON.stringify(localRecipe));
-      } else if (url.pathname.includes(JSON.stringify('drinks'))) {
-        localRecipe.meals = { ...drink };
-        localStorage.setItem('inProgressRecipes', localRecipe);
-      }
-    }
+  const handleClick = () => {
+    history.push('/done-recipes');
   };
 
   useEffect(() => {
     const localRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    setLore(localRecipe);
+    if (!localRecipe) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify({
+        cocktails: {},
+        meals: {},
+      }));
+    }
+    setProgress(JSON.parse(localStorage.getItem('inProgressRecipes')), id, url);
+    if (url.pathname.includes('foods')) {
+      mealDetails(id);
+    } else if (url.pathname.includes('drinks')) {
+      drinkDetails(id);
+    }
   }, []);
 
   return (
@@ -52,14 +73,31 @@ export default function Progress() {
         category={ meal.strMeal ? meal.strCategory : drink.strCategory }
         alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
       />
-      <DetailButtons />
-      {/* <detail */}
+      <DetailButtons
+        fav={ CheckFavs(id) }
+        meal={ meal }
+        drink={ drink }
+        id={ meal.idMeal ? meal.idMeal : drink.idDrink }
+      />
+
+      <ProgressIngredients
+        ingredients={ ingredients }
+        measures={ measures }
+        setDisabled={ setDisabled }
+      />
 
       <DetailInstructions
         inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
       />
 
-      <button type="button" onClick={ () => console.log(meal) }> test </button>
+      <button
+        type="button"
+        data-testid="finish-recipe-btn"
+        onClick={ handleClick }
+        disabled={ disabled }
+      >
+        Finalizar
+      </button>
 
       <h1> </h1>
     </section>
