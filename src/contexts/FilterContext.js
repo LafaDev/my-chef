@@ -14,6 +14,7 @@ export default function FilterContextProvider({ children }) {
   const [search, setSearch] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [cancelReset, setCancelReset] = useState(false);
+  const [cancelCategory, setCancelCategory] = useState(false);
   // functions
   const handlePage = (page) => {
     setCurrentPage(page);
@@ -42,6 +43,8 @@ export default function FilterContextProvider({ children }) {
         setCategoryFilter,
         cancelReset,
         setCancelReset,
+        cancelCategory,
+        setCancelCategory,
       } }
     >
       {children}

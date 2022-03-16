@@ -8,6 +8,7 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
     <section
       className="container containerRecomendedRecipes"
     >
+      {console.log(cocktailResponse)}
       {url.includes('foods') && cocktailResponse.map(
         (e, i) => (i <= MAX_CARD_NUMBER)
         && (
@@ -16,9 +17,12 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
             key={ `rec-${i}` }
             data-testid={ `${i}-recomendation-card` }
           >
-            recomendations
-            {' '}
-            {i}
+            <img
+              src={ e.strDrinkThumb }
+              alt={ `${e.strDrink} Thumb` }
+              name={ e.strDrink }
+              className="img-card"
+            />
             <p data-testid={ `${i}-recomendation-title` }>{e.strDrink}</p>
           </section>
         ),
@@ -31,9 +35,6 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
             key={ `rec-${i}` }
             data-testid={ `${i}-recomendation-card` }
           >
-            recomendation
-            {' '}
-            {i}
             <p data-testid={ `${i}-recomendation-title` }>{e.strMeal}</p>
           </section>
         ),

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import DetailIngredients from '../components/DetailIngredients/DetailIngredients';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import DetailButtons from '../components/DetailButtons/DetailButtons';
@@ -8,6 +8,7 @@ import DetailVideo from '../components/DetailVideo/DetailVideo';
 import RecomendRecipes from '../components/RecomendRecipes/RecomendRecipes';
 import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
 import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
+import { FilterContext } from '../contexts/FilterContext';
 import '../styles/Detail.css';
 
 const CheckDone = () => {
@@ -50,6 +51,7 @@ const CheckProgress = () => {
 
 export default function Detail() {
   const url = useLocation();
+  const history = useHistory();
   const {
     meal,
     mealDetails,
@@ -64,10 +66,13 @@ export default function Detail() {
     handleCocktailAPI,
     cocktailResponse,
   } = useContext(GeneralAPIContext);
+  const { setCancelReset, setCancelCategory } = useContext(FilterContext);
 
-  // strMeasure
-
-  //   <- para cada key ? includes Ingredients
+  const handleGoBack = () => {
+    setCancelReset(true);
+    setCancelCategory(true);
+    history.push(url.pathname.includes('foods') ? '/foods' : '/drinks');
+  };
 
   useEffect(() => {
     if (url.pathname.includes('foods')) {
@@ -81,6 +86,7 @@ export default function Detail() {
 
   return (
     <section className="containerDetail">
+      <button type="button" onClick={ handleGoBack }>Return</button>
       <div className="container c-details">
         <DetailTumb
           name={ meal.strMeal ? meal.strMeal : drink.strDrink }
