@@ -5,11 +5,12 @@ import whiteHeart from '../../images/whiteHeartIcon.svg';
 import blackHeart from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
 import useSetFav from '../../services/setFavorites';
+import { getId } from '../../contexts/DetailsAPIContext';
 import './DetailButtons.css';
 
 export default function DetailButtons({
   fav, meal, drink, id, index, recepie, handleFavorites }) {
-  const [linkCopy, setLinkCopy] = useState();
+  const [linkCopy, setLinkCopy] = useState(false);
   const [favEr, setFavEr] = useState();
 
   function handleShare() {
@@ -18,6 +19,12 @@ export default function DetailButtons({
       navigator.clipboard.writeText(
         `http://localhost:3000/${recepie.type === 'food' ? 'foods' : 'drinks'}/${recepie.id}`,
       );
+      setLinkCopy(true);
+    } else if (window.location.href.includes('in-progress')) {
+      let curr = window.location.href;
+      const finn = getId(curr);
+      curr = curr.replace(`/${finn}`, '');
+      navigator.clipboard.writeText(curr);
       setLinkCopy(true);
     } else {
       navigator.clipboard.writeText(window.location.href);
