@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 import DetailButtons from '../DetailButtons/DetailButtons';
 import './FavoriteCards.css';
 
-export default function FavoriteCards({ recepie, index }) {
+export default function FavoriteCards({ recepie, index, handleFavorites }) {
   return (
     <div>
       <Link
         to={ recepie.type === 'food' ? `/foods/${recepie.id}` : `/drinks/${recepie.id}` }
+        className="cards"
       >
-        <article className="cards">
+        <article
+          className="card-container"
+        >
           <img
             src={ recepie.image }
             alt={ `${recepie.name} Thumb` }
@@ -30,7 +33,12 @@ export default function FavoriteCards({ recepie, index }) {
         </article>
       </Link>
 
-      <DetailButtons index={ index } />
+      <DetailButtons
+        index={ index }
+        fav
+        recepie={ recepie }
+        handleFavorites={ handleFavorites }
+      />
     </div>
   );
 }

@@ -81,20 +81,24 @@ export default function Detail() {
 
   return (
     <main className="containerDetail">
-      <div className="container c-details">
-        <DetailTumb
-          name={ meal.strMeal ? meal.strMeal : drink.strDrink }
-          thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
-          category={ meal.strMeal ? meal.strCategory : drink.strCategory }
-          alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
-        />
-        <DetailButtons
-          fav={ CheckFavs() }
-          meal={ meal }
-          drink={ drink }
-          id={ meal.idMeal ? meal.idMeal : drink.idDrink }
-        />
-        <DetailIngredients ingredients={ ingredients } measures={ measures } />
+      <section className="container c-details">
+        <div className="container row">
+          <div className="c-details-md">
+            <DetailTumb
+              name={ meal.strMeal ? meal.strMeal : drink.strDrink }
+              thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
+              category={ meal.strMeal ? meal.strCategory : drink.strCategory }
+              alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
+            />
+            <DetailButtons
+              fav={ CheckFavs() }
+              meal={ meal }
+              drink={ drink }
+              id={ meal.idMeal ? meal.idMeal : drink.idDrink }
+            />
+          </div>
+          <DetailIngredients ingredients={ ingredients } measures={ measures } />
+        </div>
         <DetailInstructions
           inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
         />
@@ -103,23 +107,23 @@ export default function Detail() {
           apiResponse={ apiResponse }
           cocktailResponse={ cocktailResponse }
         />
-      </div>
-      <Link to={ `${url.pathname}/in-progress` } className="btnStart">
-        { CheckDone() && (
-          <button
-            className=""
-            data-testid="start-recipe-btn"
-            type="button"
-          >
-            { CheckProgress() }
-          </button>
-        ) }
-      </Link>
+        {
+          url.pathname.includes('foods')
+            ? <DetailVideo video={ meal.strYoutube } /> : null
+        }
 
-      {
-        url.pathname.includes('foods')
-          ? <DetailVideo video={ meal.strYoutube } /> : null
-      }
+        <Link to={ `${url.pathname}/in-progress` } className="c-button">
+          { CheckDone() && (
+            <button
+              data-testid="start-recipe-btn"
+              type="button"
+              className="btnStart"
+            >
+              { CheckProgress() }
+            </button>
+          ) }
+        </Link>
+      </section>
     </main>
   );
 }

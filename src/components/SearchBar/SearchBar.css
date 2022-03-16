@@ -4,6 +4,16 @@ h1 {
 
 
 .searchbtn {
-  background: blue;
-  font-size: 1px;
+  font-size: 16px;
+}
+
+.search-container {
+  z-index: 100;
+  background-color: rgba(2, 2, 2, 0.725);
+  /* background-color: aqua; */
+  color: #f1f1f1;
+  position: fixed;
+  padding: 20px 0;
+  top: 76px;
+  /* transition: all 0.2s; */
 }

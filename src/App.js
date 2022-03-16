@@ -17,6 +17,7 @@ import ExplorerType from './pages/ExplorerType';
 import Favorites from './pages/Favorites';
 import Progress from './pages/Progress';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 // import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,10 +27,10 @@ import FilterContextProvider from './contexts/FilterContext';
 
 function App() {
   return (
-    <Switch>
-      <GeneralAPIContextProvider>
-        <DetailsAPIContextProvider>
-          <FilterContextProvider>
+    <GeneralAPIContextProvider>
+      <DetailsAPIContextProvider>
+        <FilterContextProvider>
+          <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/foods" component={ MainFoods } />
             {/* <Route
@@ -63,10 +64,11 @@ function App() {
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/done-recipes" component={ Done } />
             <Route exact path="/favorite-recipes" component={ Favorites } />
-          </FilterContextProvider>
-        </DetailsAPIContextProvider>
-      </GeneralAPIContextProvider>
-    </Switch>
+            <Route component={ NotFound } />
+          </Switch>
+        </FilterContextProvider>
+      </DetailsAPIContextProvider>
+    </GeneralAPIContextProvider>
   );
 }
 

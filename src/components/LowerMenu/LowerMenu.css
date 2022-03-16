@@ -11,12 +11,13 @@
   align-items: center;
   background-color: #ff7b2ec7;
   border-radius: 20px;
-  bottom: 10px;
+  bottom: 0;
   color: #f1f1f1;
   cursor: pointer;
   display: flex;
   gap: 3rem;
   padding: 15px;
+  padding-bottom: 10px;
   position: fixed;
   width: auto;
 }

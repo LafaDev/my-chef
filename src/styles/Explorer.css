@@ -6,3 +6,7 @@ h1 {
   margin-top: 50vh;
 }
 
+.section-explorer section {
+  display: flex;
+  gap: 15px;
+}

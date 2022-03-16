@@ -1,4 +1,4 @@
-.section-food, .section-drink {
+.section-food, .section-drink, .section-profile {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -13,18 +13,18 @@
   background-image: url('../images/jez-timms-J7J0oTps4Lo-unsplash.jpg');
 }
 
+.section-profile, .section-explorer, .section-favorites {
+  background-color: #ffe15c;
+  height: 100vh;
+}
+
 .main-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
-}
-
-.header {
-  position: fixed;
-  width: 100%;
-  z-index: 100;
+  padding-top: 7vh;
 }
 
 .cards-container {
@@ -34,6 +34,20 @@
   height: 100%;
   justify-content: center;
   padding: 30px 0 100px;
+}
+
+.container-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 50px;
+}
+
+.container-profile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 @media ( min-width : 1500px ) {

@@ -11,7 +11,7 @@ export default function DetailIngredients({ ingredients, measures }) {
           <p
             data-testid={ `${i}-ingredient-name-and-measure` }
           >
-            { `${ingredient} ${measures[i] === '' ? '' : measures[i]}` }
+            { `${ingredient} ${measures[i] === null ? '' : measures[i]}` }
           </p>
         </div>
       )) }

@@ -12,12 +12,14 @@ export default function DetailTumb({ thumb, name, category, alcoholic }) {
         name={ name }
         className="img-details"
       />
-      <h3 data-testid="recipe-title">
-        { name }
-      </h3>
-      <p data-testid="recipe-category">
-        { alcoholic ? `${alcoholic} ${category}` : category }
-      </p>
+      <div className="">
+        <h3 data-testid="recipe-title">
+          { name }
+        </h3>
+        <p data-testid="recipe-category">
+          { alcoholic ? `${alcoholic} ${category}` : category }
+        </p>
+      </div>
     </section>
   );
 }

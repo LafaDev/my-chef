@@ -21,6 +21,8 @@ export default function Main() {
     categoryFilter,
     setSearch,
     setCategoryFilter,
+    cancelReset,
+    setCancelReset,
   } = useContext(FilterContext);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -54,20 +56,21 @@ export default function Main() {
     handleAPI();
     handlePage('foods');
     getCategories();
-    setSearch([]);
+    if (!cancelReset) setSearch([]);
     setCategoryFilter([]);
+    setCancelReset(false);
   }, []);
 
   return (
     <main className="section-food">
       <Header title="Foods" className="header" />
       <div className="main-container container">
-        <section>
+        <section className="container-buttons">
           <button
             type="button"
             data-testid="All-category-filter"
             onClick={ handleAllFilter }
-            className="btn"
+            className="btn-profile"
           >
             All
           </button>
@@ -77,7 +80,7 @@ export default function Main() {
                 type="button"
                 data-testid={ `${category.strCategory}-category-filter` }
                 key={ category.strCategory }
-                className="btn"
+                className="btn-profile"
                 onClick={ handleClick }
               >
                 { category.strCategory }

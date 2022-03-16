@@ -1,31 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './FilterButtons.css';
 
-export default function FilterButtons() {
-  const handleFilters = () => {
-    console.log('lhahu');
-  };
-
+export default function FilterButtons({ handleFilters }) {
   return (
-    <section className="container containerDetailButtons">
+    <section className="container-buttons">
       <button
-        className="btn btnFoods"
+        className="btn-profile"
         type="button"
+        name="food"
         data-testid="filter-by-food-btn"
         onClick={ handleFilters }
       >
         Food
       </button>
       <button
-        className="btn btnDrinks"
+        className="btn-profile"
         type="button"
+        name="drinks"
         data-testid="filter-by-drink-btn"
         onClick={ handleFilters }
       >
         Drinks
       </button>
       <button
-        className="btn btnAll"
+        className="btn-profile"
         type="button"
         data-testid="filter-by-all-btn"
         onClick={ handleFilters }

@@ -6,11 +6,26 @@
   padding-bottom: 50px;
 }
 
-.btnStart {
-  /* border: 2px solid yellow; */
-  background-color: red;
-  bottom: 0;
-  position: fixed;
-  text-align: center;
-  width: 100%;
+.c-details-md {
+  margin-right: 40px;
 }
+
+.c-button {
+  display: flex;
+  justify-content: center;
+  background-color: #f00;
+  font-size: 1.2rem;
+  /* width: 100%; */
+}
+
+.btnStart {
+  background-color: #ff7b00;
+  border: none;
+  bottom: 0;
+  color: #f1f1f1;
+  font-weight: 700;
+  padding: 10px 0;
+  position: fixed;
+  width: 50%;
+}
+

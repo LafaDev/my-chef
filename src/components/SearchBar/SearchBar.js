@@ -153,8 +153,8 @@ export default function SearchBar() {
   };
 
   return (
-    <section className="container containerSearch">
-      <h3> filter </h3>
+    <section className="container search-container">
+      {/* <h3> filter </h3> */}
       <form>
 
         <div className="searchbtn">

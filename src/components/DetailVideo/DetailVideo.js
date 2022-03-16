@@ -11,7 +11,7 @@ export default function DetailVideo({ video }) {
       <iframe
         className=""
         title="Step-by-Step"
-        width="560"
+        width="420"
         height="315"
         // src="https://www.youtube.com/embed/thatthingonvideourl"
         src={ embedded }
