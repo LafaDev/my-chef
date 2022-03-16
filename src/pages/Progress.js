@@ -5,6 +5,7 @@ import DetailButtons from '../components/DetailButtons/DetailButtons';
 import DetailTumb from '../components/DetailTumb/DetailTumb';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import ProgressIngredients from '../components/ProgressIngredients/ProgressIngredients';
+import useSetDone from '../services/useSetDone';
 // import React, { useEffect, useContext } from 'react';
 // import PropTypes from 'prop-types';
 // import { FilterContext } from '../contexts/FilterContext';
@@ -45,7 +46,8 @@ export default function Progress() {
   } = useContext(DetailsAPIContext);
   const [disabled, setDisabled] = useState(true);
 
-  const handleClick = () => {
+  const HandleClick = () => {
+    useSetDone(meal, drink);
     history.push('/done-recipes');
   };
 
@@ -63,6 +65,8 @@ export default function Progress() {
     } else if (url.pathname.includes('drinks')) {
       drinkDetails(id);
     }
+    console.log(meal);
+    console.log(drink);
   }, []);
 
   return (
@@ -93,7 +97,7 @@ export default function Progress() {
       <button
         type="button"
         data-testid="finish-recipe-btn"
-        onClick={ handleClick }
+        onClick={ HandleClick }
         disabled={ disabled }
       >
         Finalizar
