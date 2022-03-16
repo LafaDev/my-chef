@@ -10,7 +10,7 @@ import './DetailButtons.css';
 
 export default function DetailButtons({
   fav, meal, drink, id, index, recepie, handleFavorites }) {
-  const [linkCopy, setLinkCopy] = useState();
+  const [linkCopy, setLinkCopy] = useState(false);
   const [favEr, setFavEr] = useState();
 
   function handleShare() {
