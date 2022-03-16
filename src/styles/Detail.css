@@ -2,8 +2,10 @@
   background-color: #ffe15c;
 }
 
-.c-detail {
+.c-details {
+  background-color: rgba(56, 55, 55, 0.616);
   padding-bottom: 50px;
+  color: #f1f1f1;
 }
 
 .c-details-md {
@@ -11,11 +13,10 @@
 }
 
 .c-button {
-  display: flex;
-  justify-content: center;
   background-color: #f00;
+  display: flex;
   font-size: 1.2rem;
-  /* width: 100%; */
+  justify-content: center;
 }
 
 .btnStart {

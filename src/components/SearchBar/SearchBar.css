@@ -1,19 +1,18 @@
-h1 {
-  color: black;
+.searchbtn {
+  display: flex;
+  font-size: 16px;
+  gap: 15px;
 }
 
-
-.searchbtn {
-  font-size: 16px;
+.input-filter {
+  margin-left: 10px;
 }
 
 .search-container {
-  z-index: 100;
   background-color: rgba(2, 2, 2, 0.725);
-  /* background-color: aqua; */
   color: #f1f1f1;
-  position: fixed;
   padding: 20px 0;
+  position: fixed;
   top: 76px;
-  /* transition: all 0.2s; */
+  z-index: 100;
 }

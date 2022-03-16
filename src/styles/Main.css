@@ -1,4 +1,4 @@
-.section-food, .section-drink, .section-profile {
+.section-food, .section-drink, .section-details {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,6 +11,10 @@
 
 .section-drink {
   background-image: url('../images/jez-timms-J7J0oTps4Lo-unsplash.jpg');
+}
+
+.section-details {
+  background-image: url('../images/katie-smith-uQs1802D0CQ-unsplash.jpg');
 }
 
 .section-profile, .section-explorer, .section-favorites {

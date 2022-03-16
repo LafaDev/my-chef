@@ -166,6 +166,7 @@ export default function SearchBar() {
               data-testid="ingredient-search-radio"
               type="radio"
               id="ingredient"
+              className="input-filter"
             />
           </label>
 
@@ -177,6 +178,7 @@ export default function SearchBar() {
               data-testid="first-letter-search-radio"
               type="radio"
               id="letter"
+              className="input-filter"
             />
           </label>
 
@@ -188,6 +190,7 @@ export default function SearchBar() {
               data-testid="name-search-radio"
               type="radio"
               id="name"
+              className="input-filter"
             />
           </label>
         </div>
@@ -197,6 +200,7 @@ export default function SearchBar() {
           type="type"
           value={ input }
           onChange={ handleChange }
+          className=""
         />
         <button
           type="button"

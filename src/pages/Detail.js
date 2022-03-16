@@ -80,7 +80,7 @@ export default function Detail() {
   }, []);
 
   return (
-    <main className="containerDetail">
+    <main className="section-details">
       <section className="container c-details">
         <div className="container row">
           <div className="c-details-md">
