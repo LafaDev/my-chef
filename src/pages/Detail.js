@@ -74,7 +74,7 @@ export default function Detail() {
     history.push(url.pathname.includes('foods') ? '/foods' : '/drinks');
   };
 
-  useEffect(() => {
+  const teste = () => {
     if (url.pathname.includes('foods')) {
       mealDetails(getId(url.pathname));
       handleCocktailAPI();
@@ -82,49 +82,72 @@ export default function Detail() {
       drinkDetails(getId(url.pathname));
       handleAPI();
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    console.log('useEffect rodou');
+    teste();
+  }, [url.pathname]);
 
   return (
-    <section className="containerDetail">
-      <button type="button" onClick={ handleGoBack }>Return</button>
-      <div className="container c-details">
-        <DetailTumb
-          name={ meal.strMeal ? meal.strMeal : drink.strDrink }
-          thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
-          category={ meal.strMeal ? meal.strCategory : drink.strCategory }
-          alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
-        />
-        <DetailButtons
-          fav={ CheckFavs() }
-          meal={ meal }
-          drink={ drink }
-          id={ meal.idMeal ? meal.idMeal : drink.idDrink }
-        />
-        <DetailIngredients ingredients={ ingredients } measures={ measures } />
-        <DetailInstructions
-          inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
-        />
-        <RecomendRecipes
-          url={ url.pathname }
-          apiResponse={ apiResponse }
-          cocktailResponse={ cocktailResponse }
-        />
-      </div>
-      <Link to={ `${url.pathname}/in-progress` }>
-        {CheckDone() && (
-          <button
-            data-testid="start-recipe-btn"
-            type="button"
-            className="btnStart"
-          >
-            {CheckProgress()}
-          </button>
-        )}
-      </Link>
+    <main className="section-details">
+      <section className="container c-details">
+        <div className="container-row">
+          <div className="c-header">
+            <DetailTumb
+              name={ meal.strMeal ? meal.strMeal : drink.strDrink }
+              thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
+              category={ meal.strMeal ? meal.strCategory : drink.strCategory }
+              alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
+            />
+            <DetailButtons
+              fav={ CheckFavs() }
+              meal={ meal }
+              drink={ drink }
+              id={ meal.idMeal ? meal.idMeal : drink.idDrink }
+            />
+          </div>
+          <DetailIngredients ingredients={ ingredients } measures={ measures } />
+          <DetailInstructions
+            inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
+          />
+          <h2>Recomendações</h2>
+          <RecomendRecipes
+            url={ url.pathname }
+            apiResponse={ apiResponse }
+            cocktailResponse={ cocktailResponse }
+          />
+        </div>
 
-      {
-        url.pathname.includes('foods') ? <DetailVideo video={ meal.strYoutube } /> : null
-      }
-    </section>
+        {
+          url.pathname.includes('foods') ? (
+            <DetailVideo video={ meal.strYoutube } />) : null
+        }
+      </section>
+      <div className="detail-opt">
+        <button
+          type="button"
+          className="btnRtn"
+          onClick={ handleGoBack }
+        >
+          Return
+
+        </button>
+        <Link
+          to={ `${url.pathname}/in-progress` }
+        >
+          {CheckDone() && (
+            <button
+              data-testid="start-recipe-btn"
+              type="button"
+              // https://prod.liveshare.vsengsaas.visualstudio.com/join?88CD46C3E5CF44E95F5B6E8328A4DB8F7ED2
+              className="btnStart"
+            >
+              {CheckProgress()}
+            </button>
+          )}
+        </Link>
+      </div>
+    </main>
   );
 }

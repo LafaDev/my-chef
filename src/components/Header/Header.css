@@ -1,17 +1,25 @@
 .header {
-  align-items: center;
-  background-color: rgba(2, 2, 2, 0.725);
+  /* align-items: center; */
+  /* background-color: rgba(2, 2, 2, 0.725); */
+
+  padding: 10px 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-component {
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
+  width: 100%;
 }
 
 .header-link {
   background-color: #ff792e;
   border: 2px solid #f1f1f1;
-  border-radius: 50px;
+  border-radius: 50%;
   color: #f1f1f1;
-  padding: 10px;
+  padding: 15px;
   transition: background 0.5s;
 }
 

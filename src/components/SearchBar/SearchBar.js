@@ -153,7 +153,7 @@ export default function SearchBar() {
   };
 
   return (
-    <section className="container containerSearch search-container">
+    <section className="container search-container">
       {/* <h3> filter </h3> */}
       <form>
 
@@ -166,6 +166,7 @@ export default function SearchBar() {
               data-testid="ingredient-search-radio"
               type="radio"
               id="ingredient"
+              className="input-filter"
             />
           </label>
 
@@ -177,6 +178,7 @@ export default function SearchBar() {
               data-testid="first-letter-search-radio"
               type="radio"
               id="letter"
+              className="input-filter"
             />
           </label>
 
@@ -188,6 +190,7 @@ export default function SearchBar() {
               data-testid="name-search-radio"
               type="radio"
               id="name"
+              className="input-filter"
             />
           </label>
         </div>
@@ -197,6 +200,7 @@ export default function SearchBar() {
           type="type"
           value={ input }
           onChange={ handleChange }
+          className="input-filter"
         />
         <button
           type="button"

@@ -68,12 +68,12 @@ export default function Main() {
     <main className="section-food">
       <Header title="Foods" className="header" />
       <div className="main-container container">
-        <section>
+        <section className="container-buttons">
           <button
             type="button"
             data-testid="All-category-filter"
             onClick={ handleAllFilter }
-            className="btn"
+            className="btn-profile"
           >
             All
           </button>
@@ -83,7 +83,7 @@ export default function Main() {
               type="button"
               data-testid={ `${category.strCategory}-category-filter` }
               key={ category.strCategory }
-              className="btn"
+              className="btn-profile"
               onClick={ handleClick }
             >
               {category.strCategory}

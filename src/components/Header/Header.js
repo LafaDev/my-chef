@@ -26,8 +26,8 @@ export default function Header({ title }) {
   };
 
   return (
-    <div>
-      <header className="header">
+    <>
+      <header className="header-component container">
         <Link
           to="/profile"
           className="header-link"
@@ -51,7 +51,7 @@ export default function Header({ title }) {
               type="button"
               onClick={ handleClick }
               className="button header-link"
-              title="Pesquisar recitas"
+              title="Pesquisar receitas"
             >
               <img
                 src={ searchIcon }
@@ -64,7 +64,7 @@ export default function Header({ title }) {
         }
       </header>
       {searchBar && <SearchBar />}
-    </div>
+    </>
   );
 }
 

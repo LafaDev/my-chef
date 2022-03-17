@@ -4,9 +4,9 @@ import './FilterButtons.css';
 
 export default function FilterButtons({ handleFilters }) {
   return (
-    <section className="container containerDetailButtons filter-buttons">
+    <section className="container-buttons">
       <button
-        className="btn btnFoods"
+        className="btn-profile"
         type="button"
         name="food"
         data-testid="filter-by-food-btn"
@@ -15,7 +15,7 @@ export default function FilterButtons({ handleFilters }) {
         Food
       </button>
       <button
-        className="btn btnDrinks"
+        className="btn-Drinks"
         type="button"
         name="drinks"
         data-testid="filter-by-drink-btn"
@@ -24,7 +24,7 @@ export default function FilterButtons({ handleFilters }) {
         Drinks
       </button>
       <button
-        className="btn btnAll"
+        className="btn-profile"
         type="button"
         data-testid="filter-by-all-btn"
         onClick={ handleFilters }

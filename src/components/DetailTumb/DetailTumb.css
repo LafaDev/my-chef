@@ -1,3 +1,13 @@
-h1 {
-  color: black;
+.containerDetailTumb {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.img-details {
+  border: 2px solid #ff7b00;
+  border-radius: 5px;
+  max-width: 420px;
 }

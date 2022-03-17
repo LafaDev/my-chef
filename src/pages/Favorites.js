@@ -30,7 +30,7 @@ export default function Favorites() {
   }, []);
 
   return (
-    <section className="container">
+    <main className="section-favorites">
       <Header title="Favorite Recipes" className="header" />
       <FilterButtons
         handleFilters={ handleFilters }
@@ -42,6 +42,6 @@ export default function Favorites() {
           index={ i }
           handleFavorites={ handleFavorites }
         />))}
-    </section>
+    </main>
   );
 }

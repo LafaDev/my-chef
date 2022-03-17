@@ -8,6 +8,7 @@ export default function DetailTumb({ thumb, name, category, alcoholic }) {
       <img
         src={ thumb }
         data-testid="recipe-photo"
+        className="img-details"
         alt={ `${name} Thumb` }
         name={ name }
       />

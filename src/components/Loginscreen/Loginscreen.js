@@ -49,9 +49,9 @@ export default function Loginscreen() {
   return (
     <section className="page-login">
 
-      <h1>
-        Hmmm
-      </h1>
+      <div className="imgDetail">
+        heelo
+      </div>
 
       <div className="container-login">
         <h2>Login</h2>

@@ -8,34 +8,38 @@ import '../styles/Explorer.css';
 export default function Explorer() {
   const { setCurrentPage } = useContext(FilterContext);
   return (
-    <section className="section-explorer">
+    <section className="section-exp">
       <Header title="Explorer" className="header" />
-      <section className="explore">
-        <Link to="/explore/foods">
-          <button
-            onClick={
-              setCurrentPage('foods')
-            }
-            type="button"
-            data-testid="explore-foods"
-          >
-            Explore Foods
-          </button>
-        </Link>
+      <section className="explore-container">
+        <section className="explore-btn">
+          <Link to="/explore/foods">
+            <button
+              className="btn-exp"
+              onClick={
+                setCurrentPage('foods')
+              }
+              type="button"
+              data-testid="explore-foods"
+            >
+              Explore Foods
+            </button>
+          </Link>
 
-        <Link to="/explore/drinks">
-          <button
-            onClick={
-              setCurrentPage('drinks')
-            }
-            type="button"
-            data-testid="explore-drinks"
-          >
-            Explore Drinks
-          </button>
-        </Link>
+          <Link to="/explore/drinks">
+            <button
+              className="btn-exp"
+              onClick={
+                setCurrentPage('drinks')
+              }
+              type="button"
+              data-testid="explore-drinks"
+            >
+              Explore Drinks
+            </button>
+          </Link>
+        </section>
+        <LowerMenu />
       </section>
-      <LowerMenu />
     </section>
   );
 }

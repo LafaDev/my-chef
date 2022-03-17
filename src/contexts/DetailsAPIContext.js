@@ -34,9 +34,9 @@ export default function DetailsAPIContextProvider({ children }) {
   };
 
   const mealDetails = async (id) => {
+    setDrink({});
     setIngredients([]);
     setMeasures([]);
-    setDrink({});
     const results = await fetchMealDetails(id);
     console.log(results);
     setMeal(...results.meals);
@@ -45,9 +45,9 @@ export default function DetailsAPIContextProvider({ children }) {
   };
 
   const drinkDetails = async (id) => {
+    setMeal({});
     setIngredients([]);
     setMeasures([]);
-    setMeal({});
     const results = await fetchDrinkDetails(id);
     setDrink(...results.drinks);
     ingredientArray(...results.drinks);

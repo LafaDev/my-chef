@@ -1,7 +1,13 @@
 .containerDetailButtons {
+  align-items: center;
+  background-color: aliceblue;
+  border-radius: 35px;
   display: flex;
   gap: 15px;
+  justify-content: center;
   margin-bottom: 1rem;
+  padding: 10px;
+  width: 100%;
 }
 
 .btnStart {

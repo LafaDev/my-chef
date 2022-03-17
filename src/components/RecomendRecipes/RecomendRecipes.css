@@ -5,7 +5,7 @@ h1 {
 .containerRecomendedRecipes {
   display: flex;
   flex-direction: row;
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .reccard {
