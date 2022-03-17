@@ -15,8 +15,7 @@ export default function FilterButtons({ handleFilters }) {
         Food
       </button>
       <button
-        // className="btn-profile"
-        className="btn-Drinks"
+        className="btn-profile"
         type="button"
         name="drinks"
         data-testid="filter-by-drink-btn"

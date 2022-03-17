@@ -11,7 +11,7 @@ export default function DetailTumb({ thumb, name, category, alcoholic }) {
         className="img-details"
         alt={ `${name} Thumb` }
         name={ name }
-        className="img-details"
+        // className="img-details"
       />
       <div className="">
         <h3 data-testid="recipe-title">

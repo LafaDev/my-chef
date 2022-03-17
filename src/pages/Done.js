@@ -29,15 +29,21 @@ export default function Done() {
   useEffect(() => handleDone(), []);
 
   return (
-    <div>
-      <Header title="Done Recipes" />
-      <FilterButtons handleFilters={ handleFilters } />
-      {done && done.length > 0 && done.map((recepie, i) => (
-        <DoneCards
-          key={ recepie.id }
-          recepie={ recepie }
-          index={ i }
-        />))}
-    </div>
+    <main className="section-doneRecipes">
+      <div className="header">
+        <Header title="Done Recipes" />
+      </div>
+      <section className="main-container container">
+        <FilterButtons handleFilters={ handleFilters } />
+        <div className="">
+          { done && done.length > 0 && done.map((recepie, i) => (
+            <DoneCards
+              key={ recepie.id }
+              recepie={ recepie }
+              index={ i }
+            />)) }
+        </div>
+      </section>
+    </main>
   );
 }

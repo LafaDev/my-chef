@@ -15,11 +15,12 @@ export default function DoneCards({ recepie, index }) {
   }
 
   return (
-    <div>
+    <div className="cardsDone-container">
       <Link
         to={ recepie.type === 'food' ? `/foods/${recepie.id}` : `/drinks/${recepie.id}` }
+        className=""
       >
-        <article className="cards-done">
+        <section className="cards-done">
           <img
             src={ recepie.image }
             alt={ `${recepie.name} Thumb` }
@@ -36,16 +37,18 @@ export default function DoneCards({ recepie, index }) {
             { `${recepie.type === 'food'
               ? recepie.nationality : recepie.alcoholicOrNot} - ${recepie.category} ` }
           </span>
-          <span data-testid={ `${index}-horizontal-done-date` }>{recepie.doneDate}</span>
-          {recepie.type === 'food'
+          <span data-testid={ `${index}-horizontal-done-date` }>
+            { recepie.doneDate }
+          </span>
+          { recepie.type === 'food'
             ? recepie.tags.map((tag, i) => i < 2
-              && (<span data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</span>))
-            : null}
-        </article>
+              && (<span data-testid={ `${index}-${tag}-horizontal-tag` }>{ tag }</span>))
+            : null }
+        </section>
       </Link>
 
       <button
-        className="btn btnShare"
+        className="btnShare"
         type="button"
         onClick={ handleShare }
       >
@@ -57,7 +60,7 @@ export default function DoneCards({ recepie, index }) {
           title="Share"
         />
       </button>
-      { linkCopy && (<p>Link copied!</p>)}
+      { linkCopy && (<p>Link copied!</p>) }
     </div>
   );
 }

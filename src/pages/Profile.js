@@ -11,7 +11,9 @@ export default function Profile() {
 
   return (
     <main className="section-profile">
-      <Header title="Profile" className="header" />
+      <div className="header">
+        <Header title="Profile" className="header" />
+      </div>
       <div className="main-container container">
         <section className="container-profile">
           <EmailHeader />
