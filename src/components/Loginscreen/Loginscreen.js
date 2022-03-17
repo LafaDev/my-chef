@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { FaLock, FaUser } from 'react-icons/fa';
+import { Redirect } from 'react-router-dom';
 import './Loginscreen.css';
 import logo from '../../images/login4.png';
 
@@ -97,7 +97,7 @@ export default function Loginscreen() {
             Enter
           </button>
         </div>
-        {redirect && <Redirect to="/foods" />}
+        { redirect && <Redirect to="/foods" /> }
 
       </div>
 

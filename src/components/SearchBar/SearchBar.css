@@ -2,13 +2,35 @@
   display: flex;
   font-size: 16px;
   gap: 15px;
+  justify-content: center;
+}
+
+.input-filter {
+  margin-left: 10px;
 }
 
 .search-container {
   background-color: rgba(2, 2, 2, 0.725);
   color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
   padding: 20px 0;
-  position: fixed;
-  top: 76px;
-  z-index: 100;
+}
+
+.search-input {
+  border: none;
+  border-radius: 10px 0 0 10px;
+  font-size: 1.2rem;
+  outline: none;
+  padding-left: 10px;
+}
+
+.search-button {
+  background: #ff792e;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  color: #f1f1f1;
+  font-size: 1.2rem;
+  padding: 0 10px;
 }

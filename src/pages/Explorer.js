@@ -8,17 +8,17 @@ import '../styles/Explorer.css';
 export default function Explorer() {
   const { setCurrentPage } = useContext(FilterContext);
   return (
-    <section className="section-exp">
+    <main className="section-explorer">
       <Header title="Explorer" className="header" />
-      <section className="explore-container">
-        <section className="explore-btn">
+      <div className="main-container container">
+        <section>
           <Link to="/explore/foods">
             <button
-              className="btn-exp"
               onClick={
                 setCurrentPage('foods')
               }
               type="button"
+              className="btn-profile"
               data-testid="explore-foods"
             >
               Explore Foods
@@ -27,19 +27,19 @@ export default function Explorer() {
 
           <Link to="/explore/drinks">
             <button
-              className="btn-exp"
               onClick={
                 setCurrentPage('drinks')
               }
               type="button"
               data-testid="explore-drinks"
+              className="btn-profile"
             >
               Explore Drinks
             </button>
           </Link>
         </section>
         <LowerMenu />
-      </section>
-    </section>
+      </div>
+    </main>
   );
 }

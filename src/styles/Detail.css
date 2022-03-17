@@ -6,6 +6,28 @@
 .c-details {
   background-color: rgba(56, 55, 55, 0.616);
   color: #f1f1f1;
+  padding-bottom: 50px;
+}
+
+.c-details-md {
+  margin-right: 40px;
+}
+
+.c-button {
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+}
+
+.btnStart {
+  background-color: #ff7b00;
+  border: none;
+  bottom: 0;
+  color: #f1f1f1;
+  font-weight: 700;
+  padding: 10px 0;
+  position: fixed;
+  width: 50%;
   padding-bottom: 10vh;
 }
 

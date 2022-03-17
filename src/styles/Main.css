@@ -19,6 +19,7 @@
 
 .section-profile, .section-explorer, .section-favorites {
   background-color: #ffe15c;
+  height: 100vh;
 }
 
 .main-container {
@@ -30,7 +31,6 @@
   padding-top: 7vh;
 }
 
-
 .cards-container {
   align-items: center;
   display: flex;
@@ -38,6 +38,7 @@
   gap: 80px;
   height: 100%;
   justify-content: center;
+  padding: 30px 0 80px;
   padding: 3vh 0 100px;
 }
 
@@ -59,7 +60,7 @@
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .container-profile {
@@ -74,6 +75,3 @@
     height: 100vh;
   }
 }
-
-/* só pra passar no req */
-

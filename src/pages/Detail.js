@@ -92,8 +92,8 @@ export default function Detail() {
   return (
     <main className="section-details">
       <section className="container c-details">
-        <div className="container-row">
-          <div className="c-header">
+        <div className="container row">
+          <div className="c-details-md">
             <DetailTumb
               name={ meal.strMeal ? meal.strMeal : drink.strDrink }
               thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }

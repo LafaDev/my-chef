@@ -9,7 +9,7 @@ export default function DetailInstructions({ inst }) {
       data-testid="instructions"
     >
       <h2>Instruções</h2>
-      <p>{inst}</p>
+      <p>{ inst }</p>
     </section>
   );
 }

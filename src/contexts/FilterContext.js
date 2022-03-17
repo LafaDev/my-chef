@@ -47,7 +47,7 @@ export default function FilterContextProvider({ children }) {
         setCancelCategory,
       } }
     >
-      {children}
+      { children }
     </FilterContext.Provider>
   );
 }

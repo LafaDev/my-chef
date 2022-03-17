@@ -11,7 +11,9 @@ export default function FavoriteCards({ recepie, index, handleFavorites }) {
         to={ recepie.type === 'food' ? `/foods/${recepie.id}` : `/drinks/${recepie.id}` }
         className="cards"
       >
-        <article className="card-container">
+        <article
+          className="card-container"
+        >
           <img
             src={ recepie.image }
             alt={ `${recepie.name} Thumb` }

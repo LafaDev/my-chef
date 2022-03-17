@@ -6,6 +6,11 @@ h1 {
   background-color: aqua;
 }
 
+.section-explorer section {
+  display: flex;
+  gap: 15px;
+}
+
 section {
   display: flex;
   gap: 15px;

@@ -75,7 +75,7 @@ export default function DetailButtons({
           title="Share"
         />
       </button>
-      { linkCopy && (<p>Link copied!</p>)}
+      { linkCopy && (<p>Link copied!</p>) }
     </section>
   );
 }

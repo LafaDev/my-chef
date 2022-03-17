@@ -66,7 +66,9 @@ export default function Main() {
 
   return (
     <main className="section-food">
-      <Header title="Foods" className="header" />
+      <div className="header">
+        <Header title="Foods" />
+      </div>
       <div className="main-container container">
         <section className="container-buttons">
           <button
@@ -77,30 +79,30 @@ export default function Main() {
           >
             All
           </button>
-          {categories.map((category, i) => (i <= MAX_CATEGORIES
-          && (
-            <button
-              type="button"
-              data-testid={ `${category.strCategory}-category-filter` }
-              key={ category.strCategory }
-              className="btn-profile"
-              onClick={ handleClick }
-            >
-              {category.strCategory}
-            </button>)))}
+          { categories.map((category, i) => (i <= MAX_CATEGORIES
+            && (
+              <button
+                type="button"
+                data-testid={ `${category.strCategory}-category-filter` }
+                key={ category.strCategory }
+                className="btn-profile"
+                onClick={ handleClick }
+              >
+                { category.strCategory }
+              </button>))) }
         </section>
 
         <div className="cards-container">
-          {load && (<Loading />)}
-          {search.length > 0 && search.map((meal, i) => (i <= MAX_CARD_NUMBER)
-        && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))}
-          {search.length === 0 && categoryFilter.length === 0
-        && apiResponse.map((meal, i) => (i <= MAX_CARD_NUMBER)
-                    && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))}
-          {search.length === 1 && <Redirect to={ `/foods/${search[0].idMeal}` } />}
-          {categoryFilter.length > 0 && categoryFilter
+          { load && (<Loading />) }
+          { search.length > 0 && search.map((meal, i) => (i <= MAX_CARD_NUMBER)
+            && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+          { search.length === 0 && categoryFilter.length === 0
+            && apiResponse.map((meal, i) => (i <= MAX_CARD_NUMBER)
+              && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
+          { search.length === 1 && <Redirect to={ `/foods/${search[0].idMeal}` } /> }
+          { categoryFilter.length > 0 && categoryFilter
             .map((meal, i) => (i <= MAX_CARD_NUMBER)
-        && (<Cards key={ meal.idMeal } { ...meal } index={ i } />))}
+              && (<Cards key={ meal.idMeal } { ...meal } index={ i } />)) }
         </div>
 
         <LowerMenu />

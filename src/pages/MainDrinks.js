@@ -71,10 +71,10 @@ export default function Main() {
 
   return (
     <main className="section-drink">
-      <div>
+      <div className="header">
         <Header title="Drinks" />
       </div>
-      <section className="container-butt">
+      <section className="main-container container">
         <section className="container-buttons">
           <button
             type="button"
@@ -84,7 +84,7 @@ export default function Main() {
           >
             All
           </button>
-          {categories.map((category, i) => (i <= MAX_CATEGORIES
+          { categories.map((category, i) => (i <= MAX_CATEGORIES
             && (
               <button
                 type="button"
@@ -93,21 +93,21 @@ export default function Main() {
                 className="btn-profile"
                 onClick={ handleClick }
               >
-                {category.strCategory}
-              </button>)))}
+                { category.strCategory }
+              </button>))) }
         </section>
 
         <div className="cards-container">
-          {cocktailLoad && (<Loading />) }
-          {search.length > 0 && search.map((drink, i) => (i <= MAX_CARD_NUMBER)
-            && (<Cards key={ drink.idDrink } { ...drink } index={ i } />))}
-          {search.length === 0 && categoryFilter.length === 0
-          && cocktailResponse.map((drink, i) => (i <= MAX_CARD_NUMBER)
-          && (<Cards key={ drink.idDrink } { ...drink } index={ i } />))}
-          {search.length === 1 && <Redirect to={ `/drinks/${search[0].idDrink}` } />}
-          {categoryFilter.length > 0 && categoryFilter
+          { cocktailLoad && (<Loading />) }
+          { search.length > 0 && search.map((drink, i) => (i <= MAX_CARD_NUMBER)
+            && (<Cards key={ drink.idDrink } { ...drink } index={ i } />)) }
+          { search.length === 0 && categoryFilter.length === 0
+            && cocktailResponse.map((drink, i) => (i <= MAX_CARD_NUMBER)
+              && (<Cards key={ drink.idDrink } { ...drink } index={ i } />)) }
+          { search.length === 1 && <Redirect to={ `/drinks/${search[0].idDrink}` } /> }
+          { categoryFilter.length > 0 && categoryFilter
             .map((drink, i) => (i <= MAX_CARD_NUMBER)
-            && (<Cards key={ drink.idDrink } { ...drink } index={ i } />))}
+              && (<Cards key={ drink.idDrink } { ...drink } index={ i } />)) }
         </div>
         <LowerMenu />
       </section>

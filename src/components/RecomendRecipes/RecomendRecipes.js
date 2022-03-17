@@ -8,9 +8,9 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
   const history = useHistory();
   return (
     <section
-      className="container containerRecomendedRecipes"
+      className="containerRecomendedRecipes"
     >
-      {url.includes('foods') && cocktailResponse.map(
+      { url.includes('foods') && cocktailResponse.map(
         (e, i) => (i <= MAX_CARD_NUMBER)
         && (
           <button

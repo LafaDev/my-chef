@@ -10,13 +10,15 @@ export default function Profile() {
   // Create new semi-header element *
 
   return (
-    <main className="header">
-      <Header title="Profile" />
-      <section className="main-container container">
-        <EmailHeader />
-        <ProfileButtons />
+    <main className="section-profile">
+      <Header title="Profile" className="header" />
+      <div className="main-container container">
+        <section className="container-profile">
+          <EmailHeader />
+          <ProfileButtons />
+        </section>
         <LowerMenu />
-      </section>
+      </div>
     </main>
   );
 }
