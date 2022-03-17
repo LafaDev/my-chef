@@ -153,9 +153,9 @@ export default function SearchBar() {
   };
 
   return (
-    <section className="container search-container">
+    <section className="search-container container">
       {/* <h3> filter </h3> */}
-      <form>
+      <form className="">
 
         <div className="searchbtn">
           <label htmlFor="ingredient">
@@ -200,13 +200,13 @@ export default function SearchBar() {
           type="type"
           value={ input }
           onChange={ handleChange }
-          className=""
+          className="search-input"
         />
         <button
           type="button"
           onClick={ handleSearch }
           data-testid="exec-search-btn"
-          className=""
+          className="search-button"
         >
           Search
         </button>

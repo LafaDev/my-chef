@@ -11,14 +11,15 @@
 .header-component {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .header-link {
   background-color: #ff792e;
   border: 2px solid #f1f1f1;
-  border-radius: 50px;
+  border-radius: 50%;
   color: #f1f1f1;
-  padding: 10px;
+  padding: 15px;
   transition: background 0.5s;
 }
 

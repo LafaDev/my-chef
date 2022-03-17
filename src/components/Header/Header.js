@@ -27,7 +27,7 @@ export default function Header({ title }) {
 
   return (
     <>
-      <header className="header-component">
+      <header className="header-component container">
         <Link
           to="/profile"
           className="header-link"

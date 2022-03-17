@@ -68,8 +68,8 @@ export default function Main() {
 
   return (
     <main className="section-drink">
-      <div>
-        <Header title="Drinks" className="header" />
+      <div className="header">
+        <Header title="Drinks" />
       </div>
       <section className="main-container container">
         <section className="container-buttons">
