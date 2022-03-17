@@ -23,6 +23,8 @@ export default function Main() {
     setCategoryFilter,
     cancelReset,
     setCancelReset,
+    cancelCategory,
+    setCancelCategory,
   } = useContext(FilterContext);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -53,12 +55,13 @@ export default function Main() {
   };
 
   useEffect(() => {
+    if (!cancelReset) setSearch([]);
+    if (!cancelCategory) setCategoryFilter([]);
     handleAPI();
     handlePage('foods');
     getCategories();
-    if (!cancelReset) setSearch([]);
-    setCategoryFilter([]);
     setCancelReset(false);
+    setCancelCategory(false);
   }, []);
 
   return (

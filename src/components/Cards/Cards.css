@@ -7,6 +7,7 @@
   cursor: pointer;
   font-size: 1.5rem;
   height: 254px;
+  padding: 0;
   transition: all 0.32s;
   width: 190px;
 }

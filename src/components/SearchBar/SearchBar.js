@@ -200,7 +200,8 @@ export default function SearchBar() {
           type="type"
           value={ input }
           onChange={ handleChange }
-          className="search-input"
+          // className="search-input"
+          className="input-filter"
         />
         <button
           type="button"

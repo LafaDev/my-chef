@@ -2,11 +2,60 @@ h1 {
   color: black;
 }
 
-.explore button {
-  margin-top: 50vh;
+.explore {
+  background-color: aqua;
 }
 
 .section-explorer section {
   display: flex;
   gap: 15px;
+}
+
+section {
+  display: flex;
+  gap: 15px;
+}
+
+.section-exp {
+  background-image: url('../images/churras.jpg');
+  background-position: center;
+}
+
+.explore-btn {
+  display: flex;
+  flex-direction: column;
+  width: 40 vh;
+}
+
+.btn-exp {
+  background-color: #f8f2f2;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  color: #242323;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  outline: none;
+  padding: 1.3em 3em;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-exp:hover {
+  background-color: #eb5e28;
+  box-shadow: 0 15px 20px rgba(66, 64, 62, 0.4);
+  color: #f8f2f2;
+  transform: translateY(-7px);
+}
+
+
+.explore-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding-top: 7vh;
 }

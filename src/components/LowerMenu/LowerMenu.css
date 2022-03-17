@@ -5,6 +5,8 @@
 
 .lowerIcon:hover {
   transform: translateY(-7px);
+  transition: 1s;
+  width: 3rem;
 }
 
 .lowerMenu {
@@ -16,6 +18,7 @@
   cursor: pointer;
   display: flex;
   gap: 3rem;
+  margin-bottom: 1rem;
   padding: 15px;
   padding-bottom: 10px;
   position: fixed;

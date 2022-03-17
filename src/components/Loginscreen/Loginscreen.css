@@ -21,6 +21,12 @@
   width: 100%;
 }
 
+.imgDetail {
+  background-image: url('../../images/login.svg');
+  width: 100vh;
+  background-color: #eb5e28;
+}
+
 .container-login h2 {
   margin-bottom: 2.5rem;
   text-align: center;

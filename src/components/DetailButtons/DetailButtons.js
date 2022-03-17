@@ -14,7 +14,6 @@ export default function DetailButtons({
   const [favEr, setFavEr] = useState();
 
   function handleShare() {
-    // const url = useLocation()
     if (window.location.href.includes('favorite')) {
       navigator.clipboard.writeText(
         `http://localhost:3000/${recepie.type === 'food' ? 'foods' : 'drinks'}/${recepie.id}`,
@@ -64,8 +63,6 @@ export default function DetailButtons({
       </button>
       <button
         className="btn-details btnShare"
-        // data-testid={ index !== undefined
-        //   ? `${index}-horizontal-share-btn` : 'share-btn' }
         type="button"
         onClick={ handleShare }
       >

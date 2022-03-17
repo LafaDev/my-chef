@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import DetailIngredients from '../components/DetailIngredients/DetailIngredients';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import DetailButtons from '../components/DetailButtons/DetailButtons';
@@ -8,6 +8,7 @@ import DetailVideo from '../components/DetailVideo/DetailVideo';
 import RecomendRecipes from '../components/RecomendRecipes/RecomendRecipes';
 import { DetailsAPIContext, getId } from '../contexts/DetailsAPIContext';
 import { GeneralAPIContext } from '../contexts/GeneralAPIContext';
+import { FilterContext } from '../contexts/FilterContext';
 import '../styles/Detail.css';
 
 const CheckDone = () => {
@@ -50,6 +51,7 @@ const CheckProgress = () => {
 
 export default function Detail() {
   const url = useLocation();
+  const history = useHistory();
   const {
     meal,
     mealDetails,
@@ -64,12 +66,15 @@ export default function Detail() {
     handleCocktailAPI,
     cocktailResponse,
   } = useContext(GeneralAPIContext);
+  const { setCancelReset, setCancelCategory } = useContext(FilterContext);
 
-  // strMeasure
+  const handleGoBack = () => {
+    setCancelReset(true);
+    setCancelCategory(true);
+    history.push(url.pathname.includes('foods') ? '/foods' : '/drinks');
+  };
 
-  //   <- para cada key ? includes Ingredients
-
-  useEffect(() => {
+  const teste = () => {
     if (url.pathname.includes('foods')) {
       mealDetails(getId(url.pathname));
       handleCocktailAPI();
@@ -77,7 +82,12 @@ export default function Detail() {
       drinkDetails(getId(url.pathname));
       handleAPI();
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    console.log('useEffect rodou');
+    teste();
+  }, [url.pathname]);
 
   return (
     <main className="section-details">
@@ -98,32 +108,46 @@ export default function Detail() {
             />
           </div>
           <DetailIngredients ingredients={ ingredients } measures={ measures } />
+          <DetailInstructions
+            inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
+          />
+          <h2>Recomendações</h2>
+          <RecomendRecipes
+            url={ url.pathname }
+            apiResponse={ apiResponse }
+            cocktailResponse={ cocktailResponse }
+          />
         </div>
-        <DetailInstructions
-          inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
-        />
-        <RecomendRecipes
-          url={ url.pathname }
-          apiResponse={ apiResponse }
-          cocktailResponse={ cocktailResponse }
-        />
-        {
-          url.pathname.includes('foods')
-            ? <DetailVideo video={ meal.strYoutube } /> : null
-        }
 
-        <Link to={ `${url.pathname}/in-progress` } className="c-button">
-          { CheckDone() && (
+        {
+          url.pathname.includes('foods') ? (
+            <DetailVideo video={ meal.strYoutube } />) : null
+        }
+      </section>
+      <div className="detail-opt">
+        <button
+          type="button"
+          className="btnRtn"
+          onClick={ handleGoBack }
+        >
+          Return
+
+        </button>
+        <Link
+          to={ `${url.pathname}/in-progress` }
+        >
+          {CheckDone() && (
             <button
               data-testid="start-recipe-btn"
               type="button"
+              // https://prod.liveshare.vsengsaas.visualstudio.com/join?88CD46C3E5CF44E95F5B6E8328A4DB8F7ED2
               className="btnStart"
             >
-              { CheckProgress() }
+              {CheckProgress()}
             </button>
-          ) }
+          )}
         </Link>
-      </section>
+      </div>
     </main>
   );
 }
