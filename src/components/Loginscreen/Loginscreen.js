@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { FaLock, FaUser } from 'react-icons/fa';
 import './Loginscreen.css';
+import logo from '../../images/login4.png';
 
 const MIN_CHAR = 6;
 
@@ -49,9 +50,11 @@ export default function Loginscreen() {
   return (
     <section className="page-login">
 
-      <div className="imgDetail">
-        heelo
-      </div>
+      <img
+        className="logo"
+        src={ logo }
+        alt="test"
+      />
 
       <div className="container-login">
         <h2>Login</h2>

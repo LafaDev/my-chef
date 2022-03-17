@@ -21,11 +21,6 @@
   width: 100%;
 }
 
-.imgDetail {
-  background-image: url('../../images/login.svg');
-  width: 100vh;
-  background-color: #eb5e28;
-}
 
 .container-login h2 {
   margin-bottom: 2.5rem;
@@ -72,6 +67,10 @@
   margin-top: 2.5rem;
 }
 
+.logo {
+  width: 20em;
+}
+
 .btn-login {
   background-color: #f8f2f2;
   border: none;
@@ -103,6 +102,7 @@
   color: #c2bbbb;
   cursor: not-allowed;
 }
+
 
 /* Small devices (landscape phones, more than 600px) */
 
