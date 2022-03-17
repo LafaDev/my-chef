@@ -74,7 +74,7 @@ export default function Detail() {
     history.push(url.pathname.includes('foods') ? '/foods' : '/drinks');
   };
 
-  const teste = () => {
+  useEffect(() => {
     if (url.pathname.includes('foods')) {
       mealDetails(getId(url.pathname));
       handleCocktailAPI();
@@ -82,11 +82,6 @@ export default function Detail() {
       drinkDetails(getId(url.pathname));
       handleAPI();
     }
-  };
-
-  useEffect(() => {
-    console.log('useEffect rodou');
-    teste();
   }, [url.pathname]);
 
   return (

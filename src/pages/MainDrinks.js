@@ -39,7 +39,11 @@ export default function Main() {
   const handleSelected = () => {
     const buttons = document.querySelector('.container-buttons').children;
     [...buttons].forEach((btn) => { btn.className = 'btn-profile'; });
-    const newCategory = [...buttons].find((btn) => btn.innerHTML === selectedCategory);
+    let newCategory = [...buttons].find((btn) => btn.innerHTML === selectedCategory);
+    if (!newCategory) {
+      newCategory = [...buttons].find((btn) => btn.innerHTML === 'All');
+      newCategory.className = 'selectedBtn';
+    }
     if (selectedCategory && newCategory) newCategory.className = 'selectedBtn';
   };
 
