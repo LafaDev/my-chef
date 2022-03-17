@@ -19,7 +19,7 @@ export default function DoneCards({ recepie, index }) {
       <Link
         to={ recepie.type === 'food' ? `/foods/${recepie.id}` : `/drinks/${recepie.id}` }
       >
-        <article className="cards">
+        <article className="cards-done">
           <img
             src={ recepie.image }
             alt={ `${recepie.name} Thumb` }

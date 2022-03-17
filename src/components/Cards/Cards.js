@@ -27,10 +27,6 @@ export default function Cards({
     >
       <div
         data-testid={ `${index}-recipe-card` }
-        // style={ {
-        //   backgroundImage: `url(
-        //   ${img})`,
-        // } }
         className="card-container"
       >
         <img

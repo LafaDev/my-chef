@@ -51,7 +51,7 @@ export default function Header({ title }) {
               type="button"
               onClick={ handleClick }
               className="button header-link"
-              title="Pesquisar recitas"
+              title="Pesquisar receitas"
             >
               <img
                 src={ searchIcon }
