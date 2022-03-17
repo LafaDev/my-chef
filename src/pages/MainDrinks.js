@@ -30,20 +30,31 @@ export default function Main() {
     setCancelReset,
     cancelCategory,
     setCancelCategory,
+    selectedCategory,
+    setSelectedCategory,
   } = useContext(FilterContext);
+  // const [selectedCategory, setSelectedCategory] = useState('');
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleSelected = () => {
+    const buttons = document.querySelector('.container-buttons').children;
+    [...buttons].forEach((btn) => { btn.className = 'btn-profile'; });
+    const newCategory = [...buttons].find((btn) => btn.innerHTML === selectedCategory);
+    if (selectedCategory && newCategory) newCategory.className = 'selectedBtn';
+  };
 
   const getCategories = async () => {
     const results = await fetchDrinksCategories();
     setCategories(results.drinks);
+    if (!cancelCategory) setSelectedCategory('All');
+    handleSelected();
   };
 
   const handleClick = ({ target }) => {
     setCocktailLoad(true);
     if (selectedCategory === target.innerHTML) {
       setCategoryFilter([]);
-      setSelectedCategory('');
+      setSelectedCategory('All');
     } else {
       handleCategoryFilter(target.innerHTML, 'drinks');
       setSelectedCategory(target.innerHTML);
@@ -53,6 +64,7 @@ export default function Main() {
   };
 
   const handleAllFilter = () => {
+    setSelectedCategory('All');
     setCocktailLoad(true);
     setCategoryFilter([]);
     setSearch([]);
@@ -68,6 +80,8 @@ export default function Main() {
     setCancelReset(false);
     setCancelCategory(false);
   }, []);
+
+  useEffect(() => { handleSelected(); }, [selectedCategory]);
 
   return (
     <main className="section-drink">

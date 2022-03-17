@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import FilterButtons from '../components/FilterButtons/FilterButtons';
 import FavoriteCards from '../components/FavoriteCards/FavoriteCards';
@@ -6,6 +7,7 @@ import FavoriteCards from '../components/FavoriteCards/FavoriteCards';
 export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
   const [allFavs, setAllFavs] = useState([]);
+  const history = useHistory();
 
   const handleFavorites = () => {
     setFavorites(JSON.parse(localStorage.getItem('favoriteRecipes')));
@@ -32,6 +34,7 @@ export default function Favorites() {
   return (
     <main className="section-favorites">
       <Header title="Favorite Recipes" className="header" />
+      <button type="button" onClick={ () => history.goBack() }>Return</button>
       <FilterButtons
         handleFilters={ handleFilters }
       />
