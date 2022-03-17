@@ -26,8 +26,8 @@ export default function Header({ title }) {
   };
 
   return (
-    <div>
-      <header className="header">
+    <>
+      <header className="header-component">
         <Link
           to="/profile"
           className="header-link"
@@ -64,7 +64,7 @@ export default function Header({ title }) {
         }
       </header>
       { searchBar && <SearchBar /> }
-    </div>
+    </>
   );
 }
 

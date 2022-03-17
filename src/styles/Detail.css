@@ -4,8 +4,8 @@
 
 .c-details {
   background-color: rgba(56, 55, 55, 0.616);
-  padding-bottom: 50px;
   color: #f1f1f1;
+  padding-bottom: 50px;
 }
 
 .c-details-md {
@@ -13,7 +13,6 @@
 }
 
 .c-button {
-  background-color: #f00;
   display: flex;
   font-size: 1.2rem;
   justify-content: center;

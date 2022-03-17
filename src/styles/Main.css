@@ -43,8 +43,8 @@
 .container-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 15px;
+  justify-content: center;
   padding-top: 50px;
 }
 
