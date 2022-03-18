@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import Cards from '../components/Cards/Cards';
@@ -11,6 +11,14 @@ import '../styles/Main.css';
 
 const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
+let nameCat;
+const setNameCat = (history) => {
+  if (history.location.state) {
+    nameCat = history.location.state.name;
+  } else {
+    nameCat = undefined;
+  }
+};
 
 export default function Main() {
   const {
@@ -35,6 +43,8 @@ export default function Main() {
   } = useContext(FilterContext);
   // const [selectedCategory, setSelectedCategory] = useState('');
   const [categories, setCategories] = useState([]);
+  const [newCat, setNewCat] = useState(false);
+  const history = useHistory();
 
   const handleSelected = () => {
     const buttons = document.querySelector('.container-buttons').children;
@@ -47,15 +57,29 @@ export default function Main() {
     if (selectedCategory && newCategory) newCategory.className = 'selectedBtn';
   };
 
+  const handleIngredient = () => {
+    if (nameCat && !categories.some((cat) => cat === nameCat)) {
+      setNewCat(true);
+    }
+  };
+
   const getCategories = async () => {
     const results = await fetchDrinksCategories();
     setCategories(results.drinks);
-    if (!cancelCategory) setSelectedCategory('All');
+    handleIngredient();
+    // if (!cancelCategory) setSelectedCategory('All');
+    if (!cancelCategory) {
+      setSelectedCategory('All');
+    }
+    if (nameCat) {
+      setSelectedCategory(nameCat);
+    }
     handleSelected();
   };
 
   const handleClick = ({ target }) => {
     setCocktailLoad(true);
+    if (nameCat) setNewCat(false);
     if (selectedCategory === target.innerHTML) {
       setCategoryFilter([]);
       setSelectedCategory('All');
@@ -68,6 +92,7 @@ export default function Main() {
   };
 
   const handleAllFilter = () => {
+    setNewCat(false);
     setSelectedCategory('All');
     setCocktailLoad(true);
     setCategoryFilter([]);
@@ -76,6 +101,7 @@ export default function Main() {
   };
 
   useEffect(() => {
+    setNameCat(history);
     if (!cancelReset) setSearch([]);
     if (!cancelCategory) setCategoryFilter([]);
     handleCocktailAPI();
@@ -83,16 +109,15 @@ export default function Main() {
     getCategories();
     setCancelReset(false);
     setCancelCategory(false);
+    console.log('rodou useEffec');
   }, []);
 
   useEffect(() => { handleSelected(); }, [selectedCategory]);
 
   return (
     <main className="section-drink">
-      <div>
-        <Header title="Drinks" />
-      </div>
-      <section className="container-butt">
+      <Header title="Drinks" />
+      <section className="main-container container">
         <section className="container-buttons">
           <button
             type="button"
@@ -113,6 +138,17 @@ export default function Main() {
               >
                 {category.strCategory}
               </button>)))}
+          {newCat && (
+            <button
+              type="button"
+              data-testid={ `${nameCat}-category-filter` }
+              key={ nameCat }
+              className="btn-profile"
+              onClick={ handleClick }
+            >
+              { nameCat }
+            </button>
+          )}
         </section>
 
         <div className="cards-container">

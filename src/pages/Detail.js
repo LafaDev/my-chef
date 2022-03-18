@@ -71,7 +71,7 @@ export default function Detail() {
   const handleGoBack = () => {
     setCancelReset(true);
     setCancelCategory(true);
-    history.push(url.pathname.includes('foods') ? '/foods' : '/drinks');
+    history.push(history.location.state.from);
   };
 
   useEffect(() => {

@@ -75,5 +75,17 @@
   }
 }
 
-/* só pra passar no req */
+.profile-container {
+  background-image: url('../images/thai-food-5997301_1920.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
 
+.profileContens {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: cover;
+}

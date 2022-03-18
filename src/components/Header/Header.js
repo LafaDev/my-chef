@@ -15,7 +15,8 @@ export default function Header({ title }) {
     && tit !== 'Favorite Recipes'
     && tit !== 'Done Recipes'
     && tit !== 'Explore Ingredients'
-    && tit !== 'Explore Drinks';
+    && tit !== 'Explore Drinks'
+    && tit !== 'Explore Nationalities';
 
   const handleClick = () => {
     if (searchBar === false) {
@@ -27,7 +28,7 @@ export default function Header({ title }) {
 
   return (
     <>
-      <header className="header-component container">
+      <header className="header-component">
         <Link
           to="/profile"
           className="header-link"

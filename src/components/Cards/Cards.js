@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import './Cards.css';
 
 export default function Cards({
@@ -13,12 +13,18 @@ export default function Cards({
   index,
 }) {
   const url = useLocation();
+  const history = useHistory();
 
   const img = url.pathname.includes('foods') ? strMealThumb : strDrinkThumb;
 
   return (
-    <Link
-      to={ url.pathname.includes('foods') ? `/foods/${idMeal}` : `/drinks/${idDrink}` }
+    <button
+      // to={ url.pathname.includes('foods') ? `/foods/${idMeal}` : `/drinks/${idDrink}` }
+      type="button"
+      onClick={
+        () => history.push(url.pathname.includes('foods')
+          ? `/foods/${idMeal}` : `/drinks/${idDrink}`, { from: url.pathname })
+      }
       style={ {
         backgroundImage: `url(
         ${img})`,
@@ -43,7 +49,7 @@ export default function Cards({
           { url.pathname.includes('foods') ? strMeal : strDrink }
         </span>
       </div>
-    </Link>
+    </button>
   );
 }
 

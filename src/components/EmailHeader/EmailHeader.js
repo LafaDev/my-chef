@@ -11,7 +11,10 @@ export default function EmailHeader() {
 
   return (
     <section className="containerEmailHeaders">
-      <h1 data-testid="profile-email">
+      <h1
+        data-testid="profile-email"
+        className="texto"
+      >
         {localStorage.getItem('user') ? catchEmail() : 'Email não encontrado'}
       </h1>
     </section>

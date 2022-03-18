@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import Cards from '../components/Cards/Cards';
@@ -11,6 +11,14 @@ import '../styles/Main.css';
 
 const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
+let nameCat;
+const setNameCat = (history) => {
+  if (history.location.state) {
+    nameCat = history.location.state.name;
+  } else {
+    nameCat = undefined;
+  }
+};
 
 export default function Main() {
   const { apiResponse, handleAPI, load, setLoad } = useContext(GeneralAPIContext);
@@ -29,7 +37,10 @@ export default function Main() {
     setSelectedCategory,
   } = useContext(FilterContext);
   const [categories, setCategories] = useState([]);
+  const [newCat, setNewCat] = useState(false);
   // const [selectedCategory, setSelectedCategory] = useState('');
+  const history = useHistory();
+  // const { name } = history.location.state;
 
   const handleSelected = () => {
     const buttons = document.querySelector('.container-buttons').children;
@@ -42,15 +53,28 @@ export default function Main() {
     if (selectedCategory && newCategory) newCategory.className = 'selectedBtn';
   };
 
+  const handleIngredient = () => {
+    if (nameCat && !categories.some((cat) => cat === nameCat)) {
+      setNewCat(true);
+    }
+  };
+
   const getCategories = async () => {
     const results = await fetchMealsCategories();
     setCategories(results.meals);
-    if (!cancelCategory) setSelectedCategory('All');
+    handleIngredient();
+    if (!cancelCategory) {
+      setSelectedCategory('All');
+    }
+    if (nameCat) {
+      setSelectedCategory(nameCat);
+    }
     handleSelected();
   };
 
   const handleClick = ({ target }) => {
     setLoad(true);
+    if (nameCat) setNewCat(false);
     if (selectedCategory === target.innerHTML) {
       setCategoryFilter([]);
       setSelectedCategory('All');
@@ -59,10 +83,13 @@ export default function Main() {
       setSelectedCategory(target.innerHTML);
     }
     setSearch([]);
+    // name && setCancelCategory(true);
+    // name && set
     setLoad(false);
   };
 
   const handleAllFilter = () => {
+    setNewCat(false);
     setSelectedCategory('All');
     setLoad(true);
     setCategoryFilter([]);
@@ -71,6 +98,7 @@ export default function Main() {
   };
 
   useEffect(() => {
+    setNameCat(history);
     if (!cancelReset) setSearch([]);
     if (!cancelCategory) setCategoryFilter([]);
     handleAPI();
@@ -106,6 +134,17 @@ export default function Main() {
             >
               {category.strCategory}
             </button>)))}
+          {newCat && (
+            <button
+              type="button"
+              data-testid={ `${nameCat}-category-filter` }
+              key={ nameCat }
+              className="btn-profile"
+              onClick={ handleClick }
+            >
+              { nameCat }
+            </button>
+          )}
         </section>
 
         <div className="cards-container">

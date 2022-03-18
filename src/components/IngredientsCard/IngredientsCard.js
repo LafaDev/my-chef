@@ -15,12 +15,15 @@ export default function IngredientsCard({
   const history = useHistory();
 
   const handleClick = async () => {
+    // setCancelCategory(true);
     setCancelReset(true);
     const results = currentPage.includes('foods')
       ? await fetchMealsByIngredient(ingredient.strIngredient)
       : await fetchDrinksByIngredient(ingredient.strIngredient1);
     setSearch(results.drinks ? results.drinks : results.meals);
-    history.push(currentPage.includes('foods') ? '/foods' : '/drinks');
+    history.push(currentPage.includes('foods') ? '/foods' : '/drinks',
+      { name: currentPage.includes('foods')
+        ? ingredient.strIngredient : ingredient.strIngredient1 });
   };
 
   return (
