@@ -12,10 +12,10 @@ import '../styles/Main.css';
 const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
 let nameCat;
-const setNameCat = (history) => {
+const setNameCat = (history, cancelReset) => {
   if (history.location.state) {
     nameCat = history.location.state.name;
-  } else {
+  } else if (!cancelReset) {
     nameCat = undefined;
   }
 };
@@ -101,7 +101,7 @@ export default function Main() {
   };
 
   useEffect(() => {
-    setNameCat(history);
+    setNameCat(history, cancelReset);
     if (!cancelReset) setSearch([]);
     if (!cancelCategory) setCategoryFilter([]);
     handleCocktailAPI();
