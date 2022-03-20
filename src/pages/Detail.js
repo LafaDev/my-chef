@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import DetailIngredients from '../components/DetailIngredients/DetailIngredients';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import DetailButtons from '../components/DetailButtons/DetailButtons';
@@ -71,10 +72,10 @@ export default function Detail() {
   const handleGoBack = () => {
     setCancelReset(true);
     setCancelCategory(true);
-    history.push(url.pathname.includes('foods') ? '/foods' : '/drinks');
+    history.push(history.location.state.from);
   };
 
-  const teste = () => {
+  useEffect(() => {
     if (url.pathname.includes('foods')) {
       mealDetails(getId(url.pathname));
       handleCocktailAPI();
@@ -82,15 +83,21 @@ export default function Detail() {
       drinkDetails(getId(url.pathname));
       handleAPI();
     }
-  };
-
-  useEffect(() => {
-    console.log('useEffect rodou');
-    teste();
   }, [url.pathname]);
 
   return (
     <main className="section-details">
+      <header className="header-detail container">
+        <button
+          type="button"
+          className="btnRtn"
+          onClick={ handleGoBack }
+        >
+          <FaArrowLeft />
+          { ' ' }
+          Return
+        </button>
+      </header>
       <section className="container c-details">
         <div className="container row">
           <div className="c-details-md">
@@ -125,27 +132,19 @@ export default function Detail() {
         }
       </section>
       <div className="detail-opt">
-        <button
-          type="button"
-          className="btnRtn"
-          onClick={ handleGoBack }
-        >
-          Return
-
-        </button>
         <Link
           to={ `${url.pathname}/in-progress` }
+          className="container"
         >
-          {CheckDone() && (
+          { CheckDone() && (
             <button
               data-testid="start-recipe-btn"
               type="button"
-              // https://prod.liveshare.vsengsaas.visualstudio.com/join?88CD46C3E5CF44E95F5B6E8328A4DB8F7ED2
               className="btnStart"
             >
-              {CheckProgress()}
+              { CheckProgress() }
             </button>
-          )}
+          ) }
         </Link>
       </div>
     </main>

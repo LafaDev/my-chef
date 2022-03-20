@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import FilterButtons from '../components/FilterButtons/FilterButtons';
 import DoneCards from '../components/DoneCards/DoneCards';
@@ -6,6 +7,7 @@ import DoneCards from '../components/DoneCards/DoneCards';
 export default function Done() {
   const [done, setDone] = useState([]);
   const [allDone, setAllDone] = useState([]);
+  const history = useHistory();
 
   const handleDone = () => {
     console.log(done);
@@ -43,6 +45,7 @@ export default function Done() {
               index={ i }
             />)) }
         </div>
+        <button type="button" onClick={ () => history.goBack() }>Return</button>
       </section>
     </main>
   );

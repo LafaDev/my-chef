@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import { fetchRandomMeal } from '../services/MealsAPI';
@@ -9,14 +9,15 @@ import '../styles/ExplorerType.css';
 
 export default function ExplorerType({ match }) {
   const history = useHistory();
+  const url = useLocation();
 
   const handleSurprise = async () => {
     if (match.url.includes('foods')) {
       const randomMeal = await fetchRandomMeal();
-      history.push(`/foods/${randomMeal.meals[0].idMeal}`);
+      history.push(`/foods/${randomMeal.meals[0].idMeal}`, { from: url.pathname });
     } else if (match.url.includes('drinks')) {
       const randomDrink = await fetchRandomDrink();
-      history.push(`/drinks/${randomDrink.drinks[0].idDrink}`);
+      history.push(`/drinks/${randomDrink.drinks[0].idDrink}`, { from: url.pathname });
     }
   };
 

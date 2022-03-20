@@ -9,9 +9,11 @@ export default function Explorer() {
   const { setCurrentPage } = useContext(FilterContext);
   return (
     <main className="section-explorer">
-      <Header title="Explorer" className="header" />
+      <div className="header">
+        <Header title="Explorer" className="header" />
+      </div>
       <div className="main-container container">
-        <section>
+        <section className="explore">
           <Link to="/explore/foods">
             <button
               onClick={

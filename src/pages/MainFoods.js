@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import Cards from '../components/Cards/Cards';
@@ -11,6 +11,14 @@ import '../styles/Main.css';
 
 const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
+let nameCat;
+const setNameCat = (history, cancelReset) => {
+  if (history.location.state) {
+    nameCat = history.location.state.name;
+  } else if (!cancelReset) {
+    nameCat = undefined;
+  }
+};
 
 export default function Main() {
   const { apiResponse, handleAPI, load, setLoad } = useContext(GeneralAPIContext);
@@ -25,29 +33,64 @@ export default function Main() {
     setCancelReset,
     cancelCategory,
     setCancelCategory,
+    selectedCategory,
+    setSelectedCategory,
   } = useContext(FilterContext);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [newCat, setNewCat] = useState(false);
+  // const [selectedCategory, setSelectedCategory] = useState('');
+  const history = useHistory();
+  // const { name } = history.location.state;
+
+  const handleSelected = () => {
+    const buttons = document.querySelector('.container-buttons').children;
+    [...buttons].forEach((btn) => { btn.className = 'btn-profile'; });
+    let newCategory = [...buttons].find((btn) => btn.innerHTML === selectedCategory);
+    if (!newCategory) {
+      newCategory = [...buttons].find((btn) => btn.innerHTML === 'All');
+      newCategory.className = 'selectedBtn';
+    }
+    if (selectedCategory && newCategory) newCategory.className = 'selectedBtn';
+  };
+
+  const handleIngredient = () => {
+    if (nameCat && !categories.some((cat) => cat === nameCat)) {
+      setNewCat(true);
+    }
+  };
 
   const getCategories = async () => {
     const results = await fetchMealsCategories();
     setCategories(results.meals);
+    handleIngredient();
+    if (!cancelCategory) {
+      setSelectedCategory('All');
+    }
+    if (nameCat) {
+      setSelectedCategory(nameCat);
+    }
+    handleSelected();
   };
 
   const handleClick = ({ target }) => {
     setLoad(true);
+    if (nameCat) setNewCat(false);
     if (selectedCategory === target.innerHTML) {
       setCategoryFilter([]);
-      setSelectedCategory('');
+      setSelectedCategory('All');
     } else {
       handleCategoryFilter(target.innerHTML, 'foods');
       setSelectedCategory(target.innerHTML);
     }
     setSearch([]);
+    // name && setCancelCategory(true);
+    // name && set
     setLoad(false);
   };
 
   const handleAllFilter = () => {
+    setNewCat(false);
+    setSelectedCategory('All');
     setLoad(true);
     setCategoryFilter([]);
     setSearch([]);
@@ -55,6 +98,7 @@ export default function Main() {
   };
 
   useEffect(() => {
+    setNameCat(history, cancelReset);
     if (!cancelReset) setSearch([]);
     if (!cancelCategory) setCategoryFilter([]);
     handleAPI();
@@ -63,6 +107,8 @@ export default function Main() {
     setCancelReset(false);
     setCancelCategory(false);
   }, []);
+
+  useEffect(() => { handleSelected(); }, [selectedCategory]);
 
   return (
     <main className="section-food">
@@ -79,17 +125,28 @@ export default function Main() {
           >
             All
           </button>
-          { categories.map((category, i) => (i <= MAX_CATEGORIES
-            && (
-              <button
-                type="button"
-                data-testid={ `${category.strCategory}-category-filter` }
-                key={ category.strCategory }
-                className="btn-profile"
-                onClick={ handleClick }
-              >
-                { category.strCategory }
-              </button>))) }
+          {categories.map((category, i) => (i <= MAX_CATEGORIES
+          && (
+            <button
+              type="button"
+              data-testid={ `${category.strCategory}-category-filter` }
+              key={ category.strCategory }
+              className="btn-profile"
+              onClick={ handleClick }
+            >
+              {category.strCategory}
+            </button>)))}
+          {newCat && (
+            <button
+              type="button"
+              data-testid={ `${nameCat}-category-filter` }
+              key={ nameCat }
+              className="btn-profile"
+              onClick={ handleClick }
+            >
+              { nameCat }
+            </button>
+          )}
         </section>
 
         <div className="cards-container">

@@ -15,7 +15,8 @@ export default function Header({ title }) {
     && tit !== 'Favorite Recipes'
     && tit !== 'Done Recipes'
     && tit !== 'Explore Ingredients'
-    && tit !== 'Explore Drinks';
+    && tit !== 'Explore Drinks'
+    && tit !== 'Explore Nationalities';
 
   const handleClick = () => {
     if (searchBar === false) {
@@ -63,7 +64,7 @@ export default function Header({ title }) {
           )
         }
       </header>
-      {searchBar && <SearchBar />}
+      { searchBar && <SearchBar /> }
     </>
   );
 }

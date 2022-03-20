@@ -14,13 +14,13 @@ export default function Profile() {
       <div className="header">
         <Header title="Profile" className="header" />
       </div>
-      <div className="main-container container">
+      <section className="main-container container">
         <section className="container-profile">
           <EmailHeader />
           <ProfileButtons />
         </section>
         <LowerMenu />
-      </div>
+      </section>
     </main>
   );
 }

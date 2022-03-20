@@ -38,7 +38,6 @@ export default function DetailsAPIContextProvider({ children }) {
     setIngredients([]);
     setMeasures([]);
     const results = await fetchMealDetails(id);
-    console.log(results);
     setMeal(...results.meals);
     ingredientArray(...results.meals);
     measureArray(...results.meals);

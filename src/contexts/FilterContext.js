@@ -15,6 +15,8 @@ export default function FilterContextProvider({ children }) {
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [cancelReset, setCancelReset] = useState(false);
   const [cancelCategory, setCancelCategory] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedOpt, setSelectedOpt] = useState('');
   // functions
   const handlePage = (page) => {
     setCurrentPage(page);
@@ -45,6 +47,10 @@ export default function FilterContextProvider({ children }) {
         setCancelReset,
         cancelCategory,
         setCancelCategory,
+        selectedCategory,
+        setSelectedCategory,
+        selectedOpt,
+        setSelectedOpt,
       } }
     >
       { children }

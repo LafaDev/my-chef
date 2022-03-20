@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { FilterContext } from '../../contexts/FilterContext';
 import './RecomendRecipes.css';
 
 export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) {
   const MAX_CARD_NUMBER = 5;
   const history = useHistory();
+  const { setSearch, setCategoryFilter } = useContext(FilterContext);
+  const handleClick = (id) => {
+    setSearch([]);
+    setCategoryFilter([]);
+    history.push(url.includes('foods') ? `/drinks/${id}` : `/foods/${id}`);
+  };
   return (
     <section
       className="containerRecomendedRecipes"
@@ -16,7 +23,7 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
           <button
             key={ `recc-${i}` }
             type="button"
-            onClick={ () => history.push(`/drinks/${e.idDrink}`) }
+            onClick={ () => handleClick(e.idDrink) }
           >
             <section
               className="reccard"
@@ -39,7 +46,7 @@ export default function RecomendRecipes({ url, apiResponse, cocktailResponse }) 
           <button
             key={ `recc-${i}` }
             type="button"
-            onClick={ () => history.push(`/foods/${e.idMeal}`) }
+            onClick={ () => handleClick(e.idMeal) }
           >
             <section
               className="reccard"

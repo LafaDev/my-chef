@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LowerMenu from '../components/LowerMenu/LowerMenu';
 import Cards from '../components/Cards/Cards';
@@ -11,6 +11,14 @@ import '../styles/Main.css';
 
 const MAX_CARD_NUMBER = 11;
 const MAX_CATEGORIES = 4;
+let nameCat;
+const setNameCat = (history, cancelReset) => {
+  if (history.location.state) {
+    nameCat = history.location.state.name;
+  } else if (!cancelReset) {
+    nameCat = undefined;
+  }
+};
 
 export default function Main() {
   const {
@@ -30,20 +38,51 @@ export default function Main() {
     setCancelReset,
     cancelCategory,
     setCancelCategory,
+    selectedCategory,
+    setSelectedCategory,
   } = useContext(FilterContext);
+  // const [selectedCategory, setSelectedCategory] = useState('');
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [newCat, setNewCat] = useState(false);
+  const history = useHistory();
+
+  const handleSelected = () => {
+    const buttons = document.querySelector('.container-buttons').children;
+    [...buttons].forEach((btn) => { btn.className = 'btn-profile'; });
+    let newCategory = [...buttons].find((btn) => btn.innerHTML === selectedCategory);
+    if (!newCategory) {
+      newCategory = [...buttons].find((btn) => btn.innerHTML === 'All');
+      newCategory.className = 'selectedBtn';
+    }
+    if (selectedCategory && newCategory) newCategory.className = 'selectedBtn';
+  };
+
+  const handleIngredient = () => {
+    if (nameCat && !categories.some((cat) => cat === nameCat)) {
+      setNewCat(true);
+    }
+  };
 
   const getCategories = async () => {
     const results = await fetchDrinksCategories();
     setCategories(results.drinks);
+    handleIngredient();
+    // if (!cancelCategory) setSelectedCategory('All');
+    if (!cancelCategory) {
+      setSelectedCategory('All');
+    }
+    if (nameCat) {
+      setSelectedCategory(nameCat);
+    }
+    handleSelected();
   };
 
   const handleClick = ({ target }) => {
     setCocktailLoad(true);
+    if (nameCat) setNewCat(false);
     if (selectedCategory === target.innerHTML) {
       setCategoryFilter([]);
-      setSelectedCategory('');
+      setSelectedCategory('All');
     } else {
       handleCategoryFilter(target.innerHTML, 'drinks');
       setSelectedCategory(target.innerHTML);
@@ -53,6 +92,8 @@ export default function Main() {
   };
 
   const handleAllFilter = () => {
+    setNewCat(false);
+    setSelectedCategory('All');
     setCocktailLoad(true);
     setCategoryFilter([]);
     setSearch([]);
@@ -60,6 +101,7 @@ export default function Main() {
   };
 
   useEffect(() => {
+    setNameCat(history, cancelReset);
     if (!cancelReset) setSearch([]);
     if (!cancelCategory) setCategoryFilter([]);
     handleCocktailAPI();
@@ -67,7 +109,10 @@ export default function Main() {
     getCategories();
     setCancelReset(false);
     setCancelCategory(false);
+    console.log('rodou useEffec');
   }, []);
+
+  useEffect(() => { handleSelected(); }, [selectedCategory]);
 
   return (
     <main className="section-drink">
@@ -93,8 +138,19 @@ export default function Main() {
                 className="btn-profile"
                 onClick={ handleClick }
               >
-                { category.strCategory }
-              </button>))) }
+                {category.strCategory}
+              </button>)))}
+          {newCat && (
+            <button
+              type="button"
+              data-testid={ `${nameCat}-category-filter` }
+              key={ nameCat }
+              className="btn-profile"
+              onClick={ handleClick }
+            >
+              { nameCat }
+            </button>
+          )}
         </section>
 
         <div className="cards-container">

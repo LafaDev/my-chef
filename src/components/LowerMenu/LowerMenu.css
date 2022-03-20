@@ -5,6 +5,7 @@
 
 .lowerIcon:hover {
   transform: translateY(-7px);
+  transition: 0.8s;
 }
 
 .lowerMenu {

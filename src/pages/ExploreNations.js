@@ -13,7 +13,14 @@ const MAX_CARD_NUMBER = 11;
 
 export default function ExploreNations() {
   const { apiResponse, handleAPI, load, setLoad } = useContext(GeneralAPIContext);
-  const { search, setSearch } = useContext(FilterContext);
+  const {
+    search,
+    setSearch,
+    cancelReset,
+    selectedOpt,
+    setSelectedOpt,
+    setCancelReset,
+  } = useContext(FilterContext);
   const [nations, setNations] = useState([]);
 
   const handleNations = async () => {
@@ -22,6 +29,7 @@ export default function ExploreNations() {
   };
 
   const handleChange = async ({ target: { value } }) => {
+    setSelectedOpt(value);
     setLoad(true);
     if (value === 'All') {
       setSearch([]);
@@ -34,9 +42,11 @@ export default function ExploreNations() {
   };
 
   useEffect(() => {
-    setSearch([]);
+    if (!cancelReset) setSearch([]);
+    if (!cancelReset) setSelectedOpt('');
     handleAPI();
     handleNations();
+    setCancelReset(false);
   }, []);
 
   return (
@@ -53,6 +63,7 @@ export default function ExploreNations() {
               key={ nation.strArea }
               className="btn"
               value={ nation.strArea }
+              selected={ selectedOpt === nation.strArea }
             >
               {nation.strArea}
             </option>))}

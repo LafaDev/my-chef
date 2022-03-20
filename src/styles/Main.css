@@ -1,8 +1,12 @@
-.section-food, .section-drink, .section-details {
+.section-food, .section-drink, .section-details, .section-profile, .section-explorer {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.section-explorer {
+  background-image: url('../images/churras.jpg');
 }
 
 .section-food {
@@ -17,7 +21,11 @@
   background-image: url('../images/katie-smith-uQs1802D0CQ-unsplash.jpg');
 }
 
-.section-profile, .section-explorer, .section-favorites,
+.section-profile {
+  background-image: url('../images/thai-food-5997301_1920.jpg');
+}
+
+.section-explorer, .section-favorites,
 .section-doneRecipes {
   background-color: #ffe15c;
   height: 100vh;

@@ -1,3 +1,7 @@
+.header-detail {
+  padding: 10px 0;
+}
+
 .section-details {
   display: flex;
   flex-direction: column;
@@ -22,50 +26,31 @@
 .btnStart {
   background-color: #ff7b00;
   border: none;
-  bottom: 0;
   color: #f1f1f1;
   font-weight: 700;
   padding: 10px 0;
-  position: fixed;
-  width: 50%;
-  padding-bottom: 10vh;
-}
-
-.c-details-md {
-  margin-right: 40px;
-}
-
-.c-button {
-  display: flex;
-  font-size: 1.2rem;
-  justify-content: center;
-}
-
-.btnStart {
-  background-color: #ff7b00;
-  border: none;
-  bottom: 1vh;
-  color: #f1f1f1;
-  font-weight: 700;
-  left: 4vw;
-  padding: 20px 10px;
 }
 
 .btnRtn {
-  background-color: #ff7b00;
-  border: none;
-  bottom: 1vh;
-  color: #f1f1f1;
-  font-weight: 700;
-  padding: 20px 10px;
-  position: fixed;
-  right: 5vw;
-}
-
-
-.detail-opt {
   align-items: center;
   background-color: #ff7b00;
+  border: none;
+  border-radius: 20px;
+  color: #f1f1f1;
+  display: flex;
+  font-weight: 700;
+  gap: 5px;
+  padding: 10px;
+}
+
+.btnRtn:hover {
+  transform: translateX(-7px);
+  transition: 0.5s;
+}
+
+.detail-opt {
+  background-color: #ff7b00;
+  bottom: 0;
   display: flex;
   justify-content: center;
   position: fixed;
