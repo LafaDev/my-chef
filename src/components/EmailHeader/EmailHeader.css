@@ -1,8 +1,11 @@
-.texto {
+.container-EmailHeader {
   background-color: rgba(2, 2, 2, 0.725);
   border-radius: 45px;
-  color: white;
-  margin-top: 1em;
+  margin: 3rem 0;
   padding: 1em;
-  text-decoration:underline;
+}
+
+.email-text {
+  color: #f1f1f1;
+  text-decoration: underline;
 }

@@ -12,7 +12,7 @@ export default function Profile() {
   return (
     <main className="section-profile">
       <div className="header">
-        <Header title="Profile" className="header" />
+        <Header title="Profile" />
       </div>
       <section className="main-container container">
         <section className="container-profile">

@@ -15,52 +15,62 @@ export default function DoneCards({ recepie, index }) {
   }
 
   return (
-    <div className="cardsDone-container">
+    <div className="card-1">
       <Link
         to={ recepie.type === 'food' ? `/foods/${recepie.id}` : `/drinks/${recepie.id}` }
         className=""
       >
-        <section className="cards-done">
+        <section className="">
           <img
             src={ recepie.image }
             alt={ `${recepie.name} Thumb` }
             name={ recepie.name }
             data-testid={ `${index}-horizontal-image` }
+            className="card-img-top"
           />
-          <span data-testid={ `${index}-horizontal-name` }>
-            { recepie.name }
-          </span>
-          <span>
-            { recepie.type === 'food' ? recepie.nationality : recepie.alcoholicOrNot }
-          </span>
-          <span data-testid={ `${index}-horizontal-top-text` }>
-            { `${recepie.type === 'food'
-              ? recepie.nationality : recepie.alcoholicOrNot} - ${recepie.category} ` }
-          </span>
-          <span data-testid={ `${index}-horizontal-done-date` }>
-            { recepie.doneDate }
-          </span>
-          { recepie.type === 'food'
-            ? recepie.tags.map((tag, i) => i < 2
-              && (<span data-testid={ `${index}-${tag}-horizontal-tag` }>{ tag }</span>))
-            : null }
+          <div className="card-body">
+            <h3
+              data-testid={ `${index}-horizontal-name` }
+              className="card-title"
+            >
+              { recepie.name }
+            </h3>
+            <span>
+              { recepie.type === 'food' ? recepie.nationality : recepie.alcoholicOrNot }
+            </span>
+            <span data-testid={ `${index}-horizontal-top-text` }>
+              { `${recepie.type === 'food'
+                ? recepie.nationality : recepie.alcoholicOrNot} - ${recepie.category} ` }
+            </span>
+            <span data-testid={ `${index}-horizontal-done-date` }>
+              { recepie.doneDate }
+            </span>
+            { recepie.type === 'food'
+              ? recepie.tags.map((tag, i) => i < 2
+                && (
+                  <span data-testid={ `${index}-${tag}-horizontal-tag` }>{ tag }</span>
+                ))
+              : null }
+          </div>
         </section>
       </Link>
 
-      <button
-        className="btnShare"
-        type="button"
-        onClick={ handleShare }
-      >
-        <img
-          alt="share"
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          className="img-detail"
-          title="Share"
-        />
-      </button>
-      { linkCopy && (<p>Link copied!</p>) }
+      <div className="card-footer">
+        <button
+          className="btnShare-cardsDone"
+          type="button"
+          onClick={ handleShare }
+        >
+          <img
+            alt="share"
+            data-testid={ `${index}-horizontal-share-btn` }
+            src={ shareIcon }
+            className="img-detail"
+            title="Share"
+          />
+        </button>
+        { linkCopy && (<p>Link copied!</p>) }
+      </div>
     </div>
   );
 }

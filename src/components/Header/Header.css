@@ -1,11 +1,13 @@
 .header {
-  /* align-items: center; */
-  /* background-color: rgba(2, 2, 2, 0.725); */
-
   padding: 10px 15px;
   position: fixed;
   width: 100%;
   z-index: 100;
+}
+
+.user {
+  align-items: center;
+  display: flex;
 }
 
 .header-component {

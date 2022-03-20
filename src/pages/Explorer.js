@@ -10,7 +10,7 @@ export default function Explorer() {
   return (
     <main className="section-explorer">
       <div className="header">
-        <Header title="Explorer" className="header" />
+        <Header title="Explorer" className="" />
       </div>
       <div className="main-container container">
         <section className="explore">

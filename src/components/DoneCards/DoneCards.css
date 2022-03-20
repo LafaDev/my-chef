@@ -1,11 +1,36 @@
-.cardsDone-container {
+.cardDone {
+  height: 254px;
   width: 190px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #000;
 }
 
-/* .cards-done {
+.cards-done:hover {
+  border: 3px solid #ff792e;
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+.section-cardsDone {
+  background-color: #f1f1f1;
   display: flex;
-  flex-wrap: wrap;
-} */
+  flex-direction: column;
+}
+
+.cardsDone-name {
+  text-align: center;
+}
+
+.btnShare-cardsDone {
+  border: none;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.teste {
+  display: flex;
+}
+
+.card-1 {
+  display: flex;
+    flex-flow: column wrap;
+    flex-basis: 0;
+}

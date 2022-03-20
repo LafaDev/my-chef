@@ -98,7 +98,7 @@ export default function Detail() {
           Return
         </button>
       </header>
-      <section className="container c-details">
+      <section className="container c-details main-container">
         <div className="container row">
           <div className="c-details-md">
             <DetailTumb
@@ -130,23 +130,25 @@ export default function Detail() {
           url.pathname.includes('foods') ? (
             <DetailVideo video={ meal.strYoutube } />) : null
         }
+
+        <div className="detail-opt">
+          <Link
+            to={ `${url.pathname}/in-progress` }
+            className="container"
+          >
+            { CheckDone() && (
+              <button
+                data-testid="start-recipe-btn"
+                type="button"
+                className="btnStart"
+              >
+                { CheckProgress() }
+              </button>
+            ) }
+          </Link>
+        </div>
       </section>
-      <div className="detail-opt">
-        <Link
-          to={ `${url.pathname}/in-progress` }
-          className="container"
-        >
-          { CheckDone() && (
-            <button
-              data-testid="start-recipe-btn"
-              type="button"
-              className="btnStart"
-            >
-              { CheckProgress() }
-            </button>
-          ) }
-        </Link>
-      </div>
+
     </main>
   );
 }

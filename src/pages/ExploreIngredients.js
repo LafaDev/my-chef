@@ -26,23 +26,27 @@ export default function ExploreIngredients({ match }) {
   }, []);
 
   return (
-    <section className="section-food">
-      <Header title="Explore Ingredients" className="header" />
-      <div className="buttons-container">
-        {ingredients
-          .map(
-            (ingredient, i) => i <= MAX_INGREDIENTS
-          && (
-            <IngredientsCard
-              ingredient={ ingredient }
-              index={ i }
-              key={ match.url.includes('foods')
-                ? ingredient.idIngredient : ingredient.strIngredient1 }
-            />),
-          )}
+    <main className="section-food">
+      <div className="header">
+        <Header title="Explore Ingredients" />
       </div>
-      <LowerMenu />
-    </section>
+      <div className="main-container container">
+        <div className="buttons-container">
+          { ingredients
+            .map(
+              (ingredient, i) => i <= MAX_INGREDIENTS
+                && (
+                  <IngredientsCard
+                    ingredient={ ingredient }
+                    index={ i }
+                    key={ match.url.includes('foods')
+                      ? ingredient.idIngredient : ingredient.strIngredient1 }
+                  />),
+            ) }
+        </div>
+        <LowerMenu />
+      </div>
+    </main>
   );
 }
 

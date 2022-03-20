@@ -6,6 +6,7 @@ import DetailTumb from '../components/DetailTumb/DetailTumb';
 import DetailInstructions from '../components/DetailInstructions/DetailInstructions';
 import ProgressIngredients from '../components/ProgressIngredients/ProgressIngredients';
 import useSetDone from '../services/useSetDone';
+import '../styles/Progress.css';
 // import React, { useEffect, useContext } from 'react';
 // import PropTypes from 'prop-types';
 // import { FilterContext } from '../contexts/FilterContext';
@@ -27,7 +28,8 @@ const setProgress = (localRecipe, id, url) => {
     localStorage.setItem('inProgressRecipes', JSON.stringify(localRecipe));
   } else if (!localRecipe.cocktails[id] && url.pathname.includes('drinks')) {
     localRecipe.cocktails = {
-      ...localRecipe.cocktails, [id]: [] };
+      ...localRecipe.cocktails, [id]: [],
+    };
     localStorage.setItem('inProgressRecipes', JSON.stringify(localRecipe));
   }
 };
@@ -70,40 +72,41 @@ export default function Progress() {
   }, []);
 
   return (
-    <section className="container containerProgress">
-      <DetailTumb
-        name={ meal.strMeal ? meal.strMeal : drink.strDrink }
-        thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
-        category={ meal.strMeal ? meal.strCategory : drink.strCategory }
-        alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
-      />
-      <DetailButtons
-        fav={ CheckFavs(id) }
-        meal={ meal }
-        drink={ drink }
-        id={ meal.idMeal ? meal.idMeal : drink.idDrink }
-      />
+    <main className="section-progress">
+      <section className="main-container container c-details">
+        <DetailTumb
+          name={ meal.strMeal ? meal.strMeal : drink.strDrink }
+          thumb={ meal.strMealThumb ? meal.strMealThumb : drink.strDrinkThumb }
+          category={ meal.strMeal ? meal.strCategory : drink.strCategory }
+          alcoholic={ drink.strAlcoholic ? drink.strAlcoholic : null }
+        />
+        <DetailButtons
+          fav={ CheckFavs(id) }
+          meal={ meal }
+          drink={ drink }
+          id={ meal.idMeal ? meal.idMeal : drink.idDrink }
+        />
 
-      <ProgressIngredients
-        ingredients={ ingredients }
-        measures={ measures }
-        setDisabled={ setDisabled }
-      />
+        <ProgressIngredients
+          ingredients={ ingredients }
+          measures={ measures }
+          setDisabled={ setDisabled }
+        />
 
-      <DetailInstructions
-        inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
-      />
+        <DetailInstructions
+          inst={ meal.strInstructions ? meal.strInstructions : drink.strInstructions }
+        />
 
-      <button
-        type="button"
-        data-testid="finish-recipe-btn"
-        onClick={ HandleClick }
-        disabled={ disabled }
-      >
-        Finalizar
-      </button>
-
-      <h1> </h1>
-    </section>
+        <button
+          type="button"
+          data-testid="finish-recipe-btn"
+          onClick={ HandleClick }
+          disabled={ disabled }
+          className="btn-profile"
+        >
+          Finalizar
+        </button>
+      </section>
+    </main>
   );
 }

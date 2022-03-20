@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import FilterButtons from '../components/FilterButtons/FilterButtons';
 import DoneCards from '../components/DoneCards/DoneCards';
+import '../styles/Done.css';
 
 export default function Done() {
   const [done, setDone] = useState([]);
@@ -33,11 +34,11 @@ export default function Done() {
   return (
     <main className="section-doneRecipes">
       <div className="header">
-        <Header title="Done Recipes" />
+        <Header title="Done " />
       </div>
       <section className="main-container container">
         <FilterButtons handleFilters={ handleFilters } />
-        <div className="">
+        <div className="cardsDone-container">
           { done && done.length > 0 && done.map((recepie, i) => (
             <DoneCards
               key={ recepie.id }

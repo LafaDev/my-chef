@@ -29,18 +29,20 @@ export default function Header({ title }) {
   return (
     <>
       <header className="header-component container">
-        <Link
-          to="/profile"
-          className="header-link"
-          title="Ir para Perfil"
-        >
-          <img
-            src={ profileIcon }
-            className="icon header-icon"
-            data-testid="profile-top-btn"
-            alt="profile-icon"
-          />
-        </Link>
+        <div className="user">
+          <Link
+            to="/profile"
+            className="header-link"
+            title="Ir para Perfil"
+          >
+            <img
+              src={ profileIcon }
+              className="icon header-icon"
+              data-testid="profile-top-btn"
+              alt="profile-icon"
+            />
+          </Link>
+        </div>
 
         <h1 data-testid="page-title" className="header-title">
           { title }
