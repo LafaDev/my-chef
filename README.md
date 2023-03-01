@@ -47,7 +47,7 @@ Foram usadas 2 APIs distintas como base de dados: [TheMealDB](https://www.themea
 
 ## 🏁 Features <a name = "feats"></a>
 
-O aplicativo contém uma simulação de página de login, onde o usuário deve preencher um email válido e uma senha de no mínimo 7 digitos.
+O aplicativo contém uma simulação de página de login, onde o usuário deve preencher um email válido e uma senha de no mínimo 7 digitos. <br>
 <br> Dentro do aplicativo o usuário tem acesso ao seu perfil, onde pode ver quais receitas ja realizou, ver suas receitas favoritas ou sair da aplicação. <br>
 A aplicação não contem uma base da dados real de usuarios, e nenhum dado pessoal será salvo. 
 <br> <br>
@@ -57,15 +57,16 @@ Dentro do app existe uma pagina de receitas de comidas e outra de bebidas, além
 # 🚀 Desenvolvimento <a name = "deployment"></a>
 
 ## Metodologias
-<br>
-<img src="./src/images/app.gif">
-<br> <br> <br>
-<img src="./src/images/mobile.gif" width="200" align="right"/>
-O desenvolvimento foi feito utilizando Kanban, metodologias ageis e mobile first. <br> <br>
-O primeiro dia foi dedicado exclusivamente para planejamento, enquanto nos outros foram realizadas daily meetings para alinhamento. <br> <br>
-Foi utilizado o Trello para divisão de tarefas, além da utilização pair programming <br> para solucionar problemas de <br> forma mais rapida.
-</p>
-<br> <br> <br>
+<img src="./src/images/mobile.gif" width="230" align="right"/>
+<img src="./src/images/app.gif" width="700"/>
+
+<br> 
+
+- O desenvolvimento foi feito utilizando Kanban, metodologias ageis e mobile first.
+- O primeiro dia foi dedicado exclusivamente para planejamento, enquanto nos outros foram realizadas daily meetings para alinhamento.
+- Foi utilizado o Trello para divisão de tarefas, além da utilização pair programming para solucionar problemas de forma mais rapida.
+
+<br> 
 <hr>
 <br>
 
