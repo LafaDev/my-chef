@@ -8,11 +8,10 @@
 <div align="center">
 
 <p align="center">
-  <a href=""><img src="https://img.shields.io/badge/status-active-success.svg?color=90c861&style=for-the-badge&logo=react"></a>
   <a href="https://github.com/LafaDev/my-chef/stargazers"><img src="https://img.shields.io/github/stars/LafaDev/my-chef?color=ffd5cd&style=for-the-badge&logo=starship"></a>
   <a href="https://github.com/LafaDev/my-chef/commits/main"><img src="https://img.shields.io/github/commits-difference/LafaDev/my-chef?base=7a2a895&head=c0197b6ec&color=d35d6e&style=for-the-badge&logo=codecov"></a>
   <a href="https://github.com/Axarva/dotfiles-2.0/network/members"><img src="https://img.shields.io/github/contributors/lafadev/my-chef?color=84afdb&style=for-the-badge&logo=git"></a>
-  <a href=""><img src="https://img.shields.io/badge/Node-v16.19.1-red?style=for-the-badge&logo=node.js"></a>
+  <a href=""><img src="https://img.shields.io/badge/Node-v16.19-red?style=for-the-badge&logo=node.js"></a>
 </p>
 
 
@@ -34,7 +33,7 @@
 - [Desenvolvimento](#deployment)
   - [Metodologia](#development)
   - [Tecnologias usadas](#built_using)
-- [Authors](#authors)
+- [Autores](#authors)
 
 <br>
 
@@ -46,16 +45,31 @@ Foram usadas 2 APIs distintas como base de dados: [TheMealDB](https://www.themea
 
 <br>
 
+## 🏁 Features <a name = "feats"></a>
+
+O aplicativo contém uma simulação de página de login, onde o usuário deve preencher um email válido e uma senha de no mínimo 7 digitos.
+<br> Dentro do aplicativo o usuário tem acesso ao seu perfil, onde pode ver quais receitas ja realizou, ver suas receitas favoritas ou sair da aplicação. <br>
+A aplicação não contem uma base da dados real de usuarios, e nenhum dado pessoal será salvo. 
+<br> <br>
+Dentro do app existe uma pagina de receitas de comidas e outra de bebidas, além de uma pagina de navegação.<br>As receitas podem ser filtradas por categorias ou buscadas por ingrediente, nome e primeira letra da receita.
+<br> <br>
+
 # 🚀 Desenvolvimento <a name = "deployment"></a>
 
 ## Metodologias
-O desenvolvimento foi feito utilizando Kanban e metodologias ageis. <br> <br>
+<br>
+<img src="./src/images/app.gif">
+<br> <br> <br>
+<img src="./src/images/mobile.gif" width="200" align="right"/>
+O desenvolvimento foi feito utilizando Kanban, metodologias ageis e mobile first. <br> <br>
 O primeiro dia foi dedicado exclusivamente para planejamento, enquanto nos outros foram realizadas daily meetings para alinhamento. <br> <br>
-Foi utilizado o Trello para divisão de tarefas.
-Também foi utilizado pair programming para solucionar problemas de forma mais rapida.
-<br> <br>
+Foi utilizado o Trello para divisão de tarefas, além da utilização pair programming <br> para solucionar problemas de <br> forma mais rapida.
+</p>
+<br> <br> <br>
+<hr>
+<br>
 
-## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
+## ⛏️ Tecnologias <a name = "built_using"></a>
 - [React.js](https://www.mongodb.com/) - JavaScript Framework
   - React Context API
   - React Hooks
