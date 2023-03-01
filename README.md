@@ -56,7 +56,7 @@ Dentro do app existe uma pagina de receitas de comidas e outra de bebidas, além
 
 # 🚀 Desenvolvimento <a name = "deployment"></a>
 
-## Metodologias
+## Metodologias <a name = "development">
 <img src="./src/images/mobile.gif" width="200" align="right"/>
 <img src="./src/images/app.gif" width="600"/>
 
